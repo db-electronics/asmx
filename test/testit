@@ -1,0 +1,52 @@
+#!/bin/bash
+# this tests the various assemblers' instruction lists by
+# comparing with pre-assembled .hex files in the ref sub-directory
+
+function testit()
+{
+   echo -n "Testing $1:"
+
+   ../src/asmx -l -o -w -e -C $1 $1.asm >/dev/null 2>&1
+
+   diff -q $1.asm.hex ref/$1.asm.hex
+
+   if [ $? -ne 0 ]; then
+        echo " FAIL"
+   else
+        echo " pass"
+        rm $1.asm.hex
+        rm $1.asm.lst
+   fi
+}
+
+echo ""
+
+testit 65c02
+testit 68hc11
+testit 68hc16
+testit 68000
+testit 68010
+testit 1802
+testit 6303
+testit 6502
+testit 6502u
+testit 65c02
+testit 65c816
+testit 6800
+testit 6801
+testit 6805
+testit 68hcs08
+testit 6809
+testit 6309
+testit 8048
+testit 8051
+testit 8085u
+#testit arm
+testit f8
+testit jerry
+testit thumb
+testit tom
+testit gbz80
+testit z80
+
+echo ""

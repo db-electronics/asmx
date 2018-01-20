@@ -1,0 +1,802 @@
+                        ; 6309 instruction set test
+
+      = 0044            DIRECT	EQU	$44
+      = 4558            EXTEND	EQU	$4558
+      = 0058            INDEX_B	EQU	$58
+      = 4958            INDEX_W	EQU	$4958
+      = 0049            IMMED_B	EQU	$49
+      = 494D            IMMED_W	EQU	$494D
+      = 4144            IMMED_Q	EQU	$51554144
+
+0000  00 44             	NEG	<DIRECT
+0002  01 44             	OIM	<DIRECT		; 6309
+0004  02 44             	AIM	<DIRECT		; 6309
+0006  03 44             	COM	<DIRECT
+0008  04 44             	LSR	<DIRECT
+000A  05 44             	EIM	<DIRECT		; 6309
+000C  06 44             	ROR	<DIRECT
+000E  07 44             	ASR	<DIRECT
+0010  08 44             	ASL	<DIRECT
+0012  09 44             	ROL	<DIRECT
+0014  0A 44             	DEC	<DIRECT
+0016  0B 44             	TIM	<DIRECT		; 6309
+0018  0C 44             	INC	<DIRECT
+001A  0D 44             	TST	<DIRECT
+001C  0E 44             	JMP	<DIRECT
+001E  0F 44             	CLR	<DIRECT
+
+0020  10                	FCB	$10	; 10xx
+0021  11                	FCB	$11	; 11xx
+0022  12                	NOP
+0023  13                	SYNC
+0024  14                	SEXW			; 6309
+0025  15                	FCB	$15	; TEST
+0026  16 0000           	LBRA	*+3
+0029  17 0000           	LBSR	*+3
+002C  18                	FCB	$18
+002D  19                	DAA
+002E  1A 49             	ORCC	#IMMED_B
+0030  1B                	FCB	$1B
+0031  1C 49             	ANDCC	#IMMED_B
+0033  1D                	SEX
+0034  1E 00             	EXG	D,D
+0036  1F 00             	TFR	D,D
+
+0038  20 00             	BRA	*+2
+003A  21 00             	BRN	*+2
+003C  22 00             	BHI	*+2
+003E  23 00             	BLS	*+2
+0040  24 00             	BCC	*+2
+0042  25 00             	BCS	*+2
+0044  26 00             	BNE	*+2
+0046  27 00             	BEQ	*+2
+0048  28 00             	BVC	*+2
+004A  29 00             	BVS	*+2
+004C  2A 00             	BPL	*+2
+004E  2B 00             	BMI	*+2
+0050  2C 00             	BGE	*+2
+0052  2D 00             	BLT	*+2
+0054  2E 00             	BGT	*+2
+0056  2F 00             	BLE	*+2
+
+0058  30 84             	LEAX	,X
+005A  31 84             	LEAY	,X
+005C  32 84             	LEAS	,X
+005E  33 84             	LEAU	,X
+0060  34 FF             	PSHS	CC,D,DP,X,Y,U,PC
+0062  35 FF             	PULS	CC,D,DP,X,Y,U,PC
+0064  36 FF             	PSHU	CC,D,DP,X,Y,S,PC
+0066  37 FF             	PULU	CC,D,DP,X,Y,S,PC
+0068  38                	FCB	$38
+0069  39                	RTS
+006A  3A                	ABX
+006B  3B                	RTI
+006C  3C 49             	CWAI	#IMMED_B
+006E  3D                	MUL
+006F  3E                	FCB	$3E	; SWR
+0070  3F                	SWI
+
+0071  40                	NEGA
+0072  41                	FCB	$41
+0073  42                	FCB	$42
+0074  43                	COMA
+0075  44                	LSRA
+0076  45                	FCB	$45
+0077  46                	RORA
+0078  47                	ASRA
+0079  48                	ASLA
+007A  49                	ROLA
+007B  4A                	DECA
+007C  4B                	FCB	$4B
+007D  4C                	INCA
+007E  4D                	TSTA
+007F  4E                	FCB	$4E
+0080  4F                	CLRA
+
+0081  50                	NEGB
+0082  51                	FCB	$51
+0083  52                	FCB	$52
+0084  53                	COMB
+0085  54                	LSRB
+0086  55                	FCB	$55
+0087  56                	RORB
+0088  57                	ASRB
+0089  58                	ASLB
+008A  59                	ROLB
+008B  5A                	DECB
+008C  5B                	FCB	$5B
+008D  5C                	INCB
+008E  5D                	TSTB
+008F  5E                	FCB	$5E
+0090  5F                	CLRB
+
+0091  60 84             	NEG	,X
+0093  61 84             	OIM	,X		; 6309
+0095  62 84             	AIM	,X		; 6309
+0097  63 84             	COM	,X
+0099  64 84             	LSR	,X
+009B  65 84             	EIM	,X		; 6309
+009D  66 84             	ROR	,X
+009F  67 84             	ASR	,X
+00A1  68 84             	ASL	,X
+00A3  69 84             	ROL	,X
+00A5  6A 84             	DEC	,X
+00A7  6B 84             	TIM	,X		; 6309
+00A9  6C 84             	INC	,X
+00AB  6D 84             	TST	,X
+00AD  6E 84             	JMP	,X
+00AF  6F 84             	CLR	,X
+
+00B1  70 4558           	NEG	>EXTEND
+00B4  71 4558           	OIM	>EXTEND		; 6309
+00B7  72 4558           	AIM	>EXTEND		; 6309
+00BA  73 4558           	COM	>EXTEND
+00BD  74 4558           	LSR	>EXTEND
+00C0  75 4558           	EIM	>EXTEND		; 6309
+00C3  76 4558           	ROR	>EXTEND
+00C6  77 4558           	ASR	>EXTEND
+00C9  78 4558           	ASL	>EXTEND
+00CC  79 4558           	ROL	>EXTEND
+00CF  7A 4558           	DEC	>EXTEND
+00D2  7B 4558           	TIM	>EXTEND		; 6309
+00D5  7C 4558           	INC	>EXTEND
+00D8  7D 4558           	TST	>EXTEND
+00DB  7E 4558           	JMP	>EXTEND
+00DE  7F 4558           	CLR	>EXTEND
+
+00E1  80 49             	SUBA	#IMMED_B
+00E3  81 49             	CMPA	#IMMED_B
+00E5  82 49             	SBCA	#IMMED_B
+00E7  83 494D           	SUBD	#IMMED_W
+00EA  84 49             	ANDA	#IMMED_B
+00EC  85 49             	BITA	#IMMED_B
+00EE  86 49             	LDA	#IMMED_B
+00F0  87                	FCB	$87
+00F1  88 49             	EORA	#IMMED_B
+00F3  89 49             	ADCA	#IMMED_B
+00F5  8A 49             	ORA	#IMMED_B
+00F7  8B 49             	ADDA	#IMMED_B
+00F9  8C 494D           	CMPX	#IMMED_W
+00FC  8D 00             	BSR	*+2
+00FE  8E 494D           	LDX	#IMMED_W
+0101  8F                	FCB	$8F
+
+0102  90 44             	SUBA	<DIRECT
+0104  91 44             	CMPA	<DIRECT
+0106  92 44             	SBCA	<DIRECT
+0108  93 44             	SUBD	<DIRECT
+010A  94 44             	ANDA	<DIRECT
+010C  95 44             	BITA	<DIRECT
+010E  96 44             	LDA	<DIRECT
+0110  97 44             	STA	<DIRECT
+0112  98 44             	EORA	<DIRECT
+0114  99 44             	ADCA	<DIRECT
+0116  9A 44             	ORA	<DIRECT
+0118  9B 44             	ADDA	<DIRECT
+011A  9C 44             	CMPX	<DIRECT
+011C  9D 44             	JSR	<DIRECT
+011E  9E 44             	LDX	<DIRECT
+0120  9F 44             	STX	<DIRECT
+
+0122  A0 84             	SUBA	,X
+0124  A1 84             	CMPA	,X
+0126  A2 84             	SBCA	,X
+0128  A3 84             	SUBD	,X
+012A  A4 84             	ANDA	,X
+012C  A5 84             	BITA	,X
+012E  A6 84             	LDA	,X
+0130  A7 84             	STA	,X
+0132  A8 84             	EORA	,X
+0134  A9 84             	ADCA	,X
+0136  AA 84             	ORA	,X
+0138  AB 84             	ADDA	,X
+013A  AC 84             	CMPX	,X
+013C  AD 84             	JSR	,X
+013E  AE 84             	LDX	,X
+0140  AF 84             	STX	,X
+
+0142  B0 4558           	SUBA	>EXTEND
+0145  B1 4558           	CMPA	>EXTEND
+0148  B2 4558           	SBCA	>EXTEND
+014B  B3 4558           	SUBD	>EXTEND
+014E  B4 4558           	ANDA	>EXTEND
+0151  B5 4558           	BITA	>EXTEND
+0154  B6 4558           	LDA	>EXTEND
+0157  B7 4558           	STA	>EXTEND
+015A  B8 4558           	EORA	>EXTEND
+015D  B9 4558           	ADCA	>EXTEND
+0160  BA 4558           	ORA	>EXTEND
+0163  BB 4558           	ADDA	>EXTEND
+0166  BC 4558           	CMPX	>EXTEND
+0169  BD 4558           	JSR	>EXTEND
+016C  BE 4558           	LDX	>EXTEND
+016F  BF 4558           	STX	>EXTEND
+
+0172  C0 49             	SUBB	#IMMED_B
+0174  C1 49             	CMPB	#IMMED_B
+0176  C2 49             	SBCB	#IMMED_B
+0178  C3 494D           	ADDD	#IMMED_W
+017B  C4 49             	ANDB	#IMMED_B
+017D  C5 49             	BITB	#IMMED_B
+017F  C6 49             	LDB	#IMMED_B
+0181  C7                	FCB	$C7
+0182  C8 49             	EORB	#IMMED_B
+0184  C9 49             	ADCB	#IMMED_B
+0186  CA 49             	ORB	#IMMED_B
+0188  CB 49             	ADDB	#IMMED_B
+018A  CC 494D           	LDD	#IMMED_W
+018D  CD 51554144       	LDQ	#IMMED_Q	; 6309
+0192  CE 494D           	LDU	#IMMED_W
+0195  CF                	FCB	$CF
+
+0196  D0 44             	SUBB	<DIRECT
+0198  D1 44             	CMPB	<DIRECT
+019A  D2 44             	SBCB	<DIRECT
+019C  D3 44             	ADDD	<DIRECT
+019E  D4 44             	ANDB	<DIRECT
+01A0  D5 44             	BITB	<DIRECT
+01A2  D6 44             	LDB	<DIRECT
+01A4  D7 44             	STB	<DIRECT
+01A6  D8 44             	EORB	<DIRECT
+01A8  D9 44             	ADCB	<DIRECT
+01AA  DA 44             	ORB	<DIRECT
+01AC  DB 44             	ADDB	<DIRECT
+01AE  DC 44             	LDD	<DIRECT
+01B0  DD 44             	STD	<DIRECT
+01B2  DE 44             	LDU	<DIRECT
+01B4  DF 44             	STU	<DIRECT
+
+01B6  E0 84             	SUBB	,X
+01B8  E1 84             	CMPB	,X
+01BA  E2 84             	SBCB	,X
+01BC  E3 84             	ADDD	,X
+01BE  E4 84             	ANDB	,X
+01C0  E5 84             	BITB	,X
+01C2  E6 84             	LDB	,X
+01C4  E7 84             	STB	,X
+01C6  E8 84             	EORB	,X
+01C8  E9 84             	ADCB	,X
+01CA  EA 84             	ORB	,X
+01CC  EB 84             	ADDB	,X
+01CE  EC 84             	LDD	,X
+01D0  ED 84             	STD	,X
+01D2  EE 84             	LDU	,X
+01D4  EF 84             	STU	,X
+
+01D6  F0 4558           	SUBB	>EXTEND
+01D9  F1 4558           	CMPB	>EXTEND
+01DC  F2 4558           	SBCB	>EXTEND
+01DF  F3 4558           	ADDD	>EXTEND
+01E2  F4 4558           	ANDB	>EXTEND
+01E5  F5 4558           	BITB	>EXTEND
+01E8  F6 4558           	LDB	>EXTEND
+01EB  F7 4558           	STB	>EXTEND
+01EE  F8 4558           	EORB	>EXTEND
+01F1  F9 4558           	ADCB	>EXTEND
+01F4  FA 4558           	ORB	>EXTEND
+01F7  FB 4558           	ADDB	>EXTEND
+01FA  FC 4558           	LDD	>EXTEND
+01FD  FD 4558           	STD	>EXTEND
+0200  FE 4558           	LDU	>EXTEND
+0203  FF 4558           	STU	>EXTEND
+
+                        ; 10XX
+
+                        ;	LBRA	*+4
+0206  1021 0000         	LBRN	*+4
+020A  1022 0000         	LBHI	*+4
+020E  1023 0000         	LBLS	*+4
+0212  1024 0000         	LBCC	*+4
+0216  1025 0000         	LBCS	*+4
+021A  1026 0000         	LBNE	*+4
+021E  1027 0000         	LBEQ	*+4
+0222  1028 0000         	LBVC	*+4
+0226  1029 0000         	LBVS	*+4
+022A  102A 0000         	LBPL	*+4
+022E  102B 0000         	LBMI	*+4
+0232  102C 0000         	LBGE	*+4
+0236  102D 0000         	LBLT	*+4
+023A  102E 0000         	LBGT	*+4
+023E  102F 0000         	LBLE	*+4
+
+0242  1030 00           	ADDR	D,D		; 6309
+0245  1031 00           	ADCR	D,D		; 6309
+0248  1032 00           	SUBR	D,D		; 6309
+024B  1033 00           	SBCR	D,D		; 6309
+024E  1034 00           	ANDR	D,D		; 6309
+0251  1035 00           	ORR	D,D		; 6309
+0254  1036 00           	EORR	D,D		; 6309
+0257  1037 00           	CMPR	D,D		; 6309
+025A  1038              	PSHSW			; 6309
+025C  1039              	PULSW			; 6309
+025E  103A              	PSHUW			; 6309
+0260  103B              	PULUW			; 6309
+0262  103F              	SWI2
+
+0264  1040              	NEGD			; 6309
+0266  1043              	COMD			; 6309
+0268  4456              	LSRD			; 6309
+026A  1046              	RORD			; 6309
+026C  1047              	ASRD			; 6309
+026E  5849              	ASLD			; 6309
+0270  1049              	ROLD			; 6309
+0272  104A              	DECD			; 6309
+0274  104C              	INCD			; 6309
+0276  104D              	TSTD			; 6309
+0278  104F              	CLRD			; 6309
+
+027A  1053              	COMW			; 6309
+027C  1054              	LSRW			; 6309
+027E  1056              	RORW			; 6309
+0280  1059              	ROLW			; 6309
+0282  105A              	DECW			; 6309
+0284  105C              	INCW			; 6309
+0286  105D              	TSTW			; 6309
+0288  105F              	CLRW			; 6309
+
+028A  1080 494D         	SUBW	#IMMED_W	; 6309
+028E  1081 494D         	CMPW	#IMMED_W	; 6309
+0292  1082 494D         	SBCD	#IMMED_W	; 6309
+0296  1083 494D         	CMPD	#IMMED_W
+029A  1084 494D         	ANDD	#IMMED_W	; 6309
+029E  1085 494D         	BITD	#IMMED_W	; 6309
+02A2  1086 494D         	LDW	#IMMED_W	; 6309
+02A6  1088 494D         	EORD	#IMMED_W	; 6309
+02AA  1089 494D         	ADCD	#IMMED_W	; 6309
+02AE  108A 494D         	ORD	#IMMED_W	; 6309
+02B2  108B 494D         	ADDW	#IMMED_W	; 6309
+02B6  108C 494D         	CMPY	#IMMED_W
+02BA  108E 494D         	LDY	#IMMED_W
+
+02BE  1090 44           	SUBW	<DIRECT		; 6309
+02C1  1091 44           	CMPW	<DIRECT		; 6309
+02C4  1092 44           	SBCD	<DIRECT		; 6309
+02C7  1093 44           	CMPD	<DIRECT
+02CA  1094 44           	ANDD	<DIRECT		; 6309
+02CD  1095 44           	BITD	<DIRECT		; 6309
+02D0  1096 44           	LDW	<DIRECT		; 6309
+02D3  1097 44           	STW	<DIRECT		; 6309
+02D6  1098 44           	EORD	<DIRECT		; 6309
+02D9  1099 44           	ADCD	<DIRECT		; 6309
+02DC  109A 44           	ORD	<DIRECT		; 6309
+02DF  109B 44           	ADDW	<DIRECT		; 6309
+02E2  109C 44           	CMPY	<DIRECT
+02E5  109E 44           	LDY	<DIRECT
+02E8  109F 44           	STY	<DIRECT
+
+02EB  10A0 84           	SUBW	,X		; 6309
+02EE  10A1 84           	CMPW	,X		; 6309
+02F1  10A2 84           	SBCD	,X		; 6309
+02F4  10A3 84           	CMPD	,X
+02F7  10A4 84           	ANDD	,X		; 6309
+02FA  10A5 84           	BITD	,X		; 6309
+02FD  10A6 84           	LDW	,X		; 6309
+0300  10A7 84           	STW	,X		; 6309
+0303  10A8 84           	EORD	,X		; 6309
+0306  10A9 84           	ADCD	,X		; 6309
+0309  10AA 84           	ORD	,X		; 6309
+030C  10AB 84           	ADDW	,X		; 6309
+030F  10AC 84           	CMPY	,X
+0312  10AE 84           	LDY	,X
+0315  10AF 84           	STY	,X
+
+0318  10B0 4558         	SUBW	>EXTEND		; 6309
+031C  10B1 4558         	CMPW	>EXTEND		; 6309
+0320  10B2 4558         	SBCD	>EXTEND		; 6309
+0324  10B3 4558         	CMPD	>EXTEND
+0328  10B4 4558         	ANDD	>EXTEND		; 6309
+032C  10B5 4558         	BITD	>EXTEND		; 6309
+0330  10B6 4558         	LDW	>EXTEND		; 6309
+0334  10B7 4558         	STW	>EXTEND		; 6309
+0338  10B8 4558         	EORD	>EXTEND		; 6309
+033C  10B9 4558         	ADCD	>EXTEND		; 6309
+0340  10BA 4558         	ORD	>EXTEND		; 6309
+0344  10BB 4558         	ADDW	>EXTEND		; 6309
+0348  10BC 4558         	CMPY	>EXTEND
+034C  10BE 4558         	LDY	>EXTEND
+0350  10BF 4558         	STY	>EXTEND
+
+0354  10CE 494D         	LDS	#IMMED_W
+
+0358  10DC 44           	LDQ	<DIRECT		; 6309
+035B  10DD 44           	STQ	<DIRECT		; 6309
+035E  10DE 44           	LDS	<DIRECT
+0361  10DF 44           	STS	<DIRECT
+
+0364  10EC 84           	LDQ	,X		; 6309
+0367  10ED 84           	STQ	,X		; 6309
+036A  10EE 84           	LDS	,X
+036D  10EF 84           	STS	,X
+
+0370  10FC 4558         	LDQ	>EXTEND		; 6309
+0374  10FD 4558         	STQ	>EXTEND		; 6309
+0378  10FE 4558         	LDS	>EXTEND
+037C  10FF 4558         	STS	>EXTEND
+
+                        ; 11XX
+
+0380  1130 AA 44        	BAND	B,5,2,<DIRECT	; 6309
+0384  1131 AA 44        	BIAND	B,5,2,<DIRECT	; 6309
+0388  1132 AA 44        	BOR	B,5,2,<DIRECT	; 6309
+038C  1133 AA 44        	BIOR	B,5,2,<DIRECT	; 6309
+0390  1134 AA 44        	BEOR	B,5,2,<DIRECT	; 6309
+0394  1135 AA 44        	BIEOR	B,5,2,<DIRECT	; 6309
+0398  1136 AA 44        	LDBT	B,5,2,<DIRECT	; 6309
+039C  1137 AA 44        	STBT	B,5,2,<DIRECT	; 6309
+03A0  1138 00           	TFM	D+,D+		; 6309
+03A3  1139 00           	TFM	D-,D-		; 6309
+03A6  113A 00           	TFM	D+,D		; 6309
+03A9  113B 00           	TFM	D,D+		; 6309
+03AC  113C 49           	BITMD	#IMMED_B	; 6309
+03AF  113D 49           	LDMD	#IMMED_B	; 6309
+03B2  113F              	SWI3
+
+03B4  1143              	COME			; 6309
+03B6  114A              	DECE			; 6309
+03B8  114C              	INCE			; 6309
+03BA  114D              	TSTE			; 6309
+03BC  114F              	CLRE			; 6309
+
+03BE  1153              	COMF			; 6309
+03C0  115A              	DECF			; 6309
+03C2  115C              	INCF			; 6309
+03C4  115D              	TSTF			; 6309
+03C6  115F              	CLRF			; 6309
+
+03C8  1180 49           	SUBE	#IMMED_B	; 6309
+03CB  1181 49           	CMPE	#IMMED_B	; 6309
+03CE  1183 494D         	CMPU	#IMMED_W
+03D2  1186 49           	LDE	#IMMED_B	; 6309
+03D5  118B 49           	ADDE	#IMMED_B	; 6309
+03D8  118C 494D         	CMPS	#IMMED_W
+03DC  118D 4D           	DIVD	#IMMED_W	; 6309
+03DF  118E 494D         	DIVQ	#IMMED_W	; 6309
+03E3  118F 494D         	MULD	#IMMED_W	; 6309
+
+03E7  1190 44           	SUBE	<DIRECT		; 6309
+03EA  1191 44           	CMPE	<DIRECT		; 6309
+03ED  1193 44           	CMPU	<DIRECT
+03F0  1196 44           	LDE	<DIRECT		; 6309
+03F3  1197 44           	STE	<DIRECT		; 6309
+03F6  119B 44           	ADDE	<DIRECT		; 6309
+03F9  119C 44           	CMPS	<DIRECT
+03FC  119D 44           	DIVD	<DIRECT		; 6309
+03FF  119E 44           	DIVQ	<DIRECT		; 6309
+0402  119F 44           	MULD	<DIRECT		; 6309
+
+0405  11A0 84           	SUBE	,X		; 6309
+0408  11A1 84           	CMPE	,X		; 6309
+040B  11A3 84           	CMPU	,X
+040E  11A6 84           	LDE	,X		; 6309
+0411  11A7 84           	STE	,X		; 6309
+0414  11AB 84           	ADDE	,X		; 6309
+0417  11AC 84           	CMPS	,X
+041A  11AD 84           	DIVD	,X		; 6309
+041D  11AE 84           	DIVQ	,X		; 6309
+0420  11AF 84           	MULD	,X		; 6309
+
+0423  11B0 4558         	SUBE	>EXTEND		; 6309
+0427  11B1 4558         	CMPE	>EXTEND		; 6309
+042B  11B3 4558         	CMPU	>EXTEND
+042F  11B6 4558         	LDE	>EXTEND		; 6309
+0433  11B7 4558         	STE	>EXTEND		; 6309
+0437  11BB 4558         	ADDE	>EXTEND		; 6309
+043B  11BC 4558         	CMPS	>EXTEND
+043F  11BD 4558         	DIVD	>EXTEND		; 6309
+0443  11BE 4558         	DIVQ	>EXTEND		; 6309
+0447  11BF 4558         	MULD	>EXTEND		; 6309
+
+044B  11C0 49           	SUBF	#IMMED_B	; 6309
+044E  11C1 49           	CMPF	#IMMED_B	; 6309
+0451  11C6 49           	LDF	#IMMED_B	; 6309
+0454  11CB 49           	ADDF	#IMMED_B	; 6309
+
+0457  11D0 44           	SUBF	<DIRECT		; 6309
+045A  11D1 44           	CMPF	<DIRECT		; 6309
+045D  11D6 44           	LDF	<DIRECT		; 6309
+0460  11D7 44           	STF	<DIRECT		; 6309
+0463  11DB 44           	ADDF	<DIRECT		; 6309
+
+0466  11F0 4558         	SUBF	>EXTEND		; 6309
+046A  11F1 4558         	CMPF	>EXTEND		; 6309
+046E  11F6 4558         	LDF	>EXTEND		; 6309
+0472  11F7 4558         	STF	>EXTEND		; 6309
+0476  11FB 4558         	ADDF	>EXTEND		; 6309
+
+                        ; indexed addressing modes
+
+047A  30 00             	LEAX	0,X
+047C  30 01             	LEAX	1,X
+047E  30 02             	LEAX	2,X
+0480  30 03             	LEAX	3,X
+0482  30 04             	LEAX	4,X
+0484  30 05             	LEAX	5,X
+0486  30 06             	LEAX	6,X
+0488  30 07             	LEAX	7,X
+048A  30 08             	LEAX	8,X
+048C  30 09             	LEAX	9,X
+048E  30 0A             	LEAX	10,X
+0490  30 0B             	LEAX	11,X
+0492  30 0C             	LEAX	12,X
+0494  30 0D             	LEAX	13,X
+0496  30 0E             	LEAX	14,X
+0498  30 0F             	LEAX	15,X
+
+049A  30 10             	LEAX	-16,X
+049C  30 11             	LEAX	-15,X
+049E  30 12             	LEAX	-14,X
+04A0  30 13             	LEAX	-13,X
+04A2  30 14             	LEAX	-12,X
+04A4  30 15             	LEAX	-11,X
+04A6  30 16             	LEAX	-10,X
+04A8  30 17             	LEAX	-9,X
+04AA  30 18             	LEAX	-8,X
+04AC  30 19             	LEAX	-7,X
+04AE  30 1A             	LEAX	-6,X
+04B0  30 1B             	LEAX	-5,X
+04B2  30 1C             	LEAX	-4,X
+04B4  30 1D             	LEAX	-3,X
+04B6  30 1E             	LEAX	-2,X
+04B8  30 1F             	LEAX	-1,X
+
+04BA  30 20             	LEAX	0,Y
+04BC  30 21             	LEAX	1,Y
+04BE  30 22             	LEAX	2,Y
+04C0  30 23             	LEAX	3,Y
+04C2  30 24             	LEAX	4,Y
+04C4  30 25             	LEAX	5,Y
+04C6  30 26             	LEAX	6,Y
+04C8  30 27             	LEAX	7,Y
+04CA  30 28             	LEAX	8,Y
+04CC  30 29             	LEAX	9,Y
+04CE  30 2A             	LEAX	10,Y
+04D0  30 2B             	LEAX	11,Y
+04D2  30 2C             	LEAX	12,Y
+04D4  30 2D             	LEAX	13,Y
+04D6  30 2E             	LEAX	14,Y
+04D8  30 2F             	LEAX	15,Y
+
+04DA  30 30             	LEAX	-16,Y
+04DC  30 31             	LEAX	-15,Y
+04DE  30 32             	LEAX	-14,Y
+04E0  30 33             	LEAX	-13,Y
+04E2  30 34             	LEAX	-12,Y
+04E4  30 35             	LEAX	-11,Y
+04E6  30 36             	LEAX	-10,Y
+04E8  30 37             	LEAX	-9,Y
+04EA  30 38             	LEAX	-8,Y
+04EC  30 39             	LEAX	-7,Y
+04EE  30 3A             	LEAX	-6,Y
+04F0  30 3B             	LEAX	-5,Y
+04F2  30 3C             	LEAX	-4,Y
+04F4  30 3D             	LEAX	-3,Y
+04F6  30 3E             	LEAX	-2,Y
+04F8  30 3F             	LEAX	-1,Y
+
+04FA  30 40             	LEAX	0,U
+04FC  30 41             	LEAX	1,U
+04FE  30 42             	LEAX	2,U
+0500  30 43             	LEAX	3,U
+0502  30 44             	LEAX	4,U
+0504  30 45             	LEAX	5,U
+0506  30 46             	LEAX	6,U
+0508  30 47             	LEAX	7,U
+050A  30 48             	LEAX	8,U
+050C  30 49             	LEAX	9,U
+050E  30 4A             	LEAX	10,U
+0510  30 4B             	LEAX	11,U
+0512  30 4C             	LEAX	12,U
+0514  30 4D             	LEAX	13,U
+0516  30 4E             	LEAX	14,U
+0518  30 4F             	LEAX	15,U
+
+051A  30 50             	LEAX	-16,U
+051C  30 51             	LEAX	-15,U
+051E  30 52             	LEAX	-14,U
+0520  30 53             	LEAX	-13,U
+0522  30 54             	LEAX	-12,U
+0524  30 55             	LEAX	-11,U
+0526  30 56             	LEAX	-10,U
+0528  30 57             	LEAX	-9,U
+052A  30 58             	LEAX	-8,U
+052C  30 59             	LEAX	-7,U
+052E  30 5A             	LEAX	-6,U
+0530  30 5B             	LEAX	-5,U
+0532  30 5C             	LEAX	-4,U
+0534  30 5D             	LEAX	-3,U
+0536  30 5E             	LEAX	-2,U
+0538  30 5F             	LEAX	-1,U
+
+053A  30 60             	LEAX	0,S
+053C  30 61             	LEAX	1,S
+053E  30 62             	LEAX	2,S
+0540  30 63             	LEAX	3,S
+0542  30 64             	LEAX	4,S
+0544  30 65             	LEAX	5,S
+0546  30 66             	LEAX	6,S
+0548  30 67             	LEAX	7,S
+054A  30 68             	LEAX	8,S
+054C  30 69             	LEAX	9,S
+054E  30 6A             	LEAX	10,S
+0550  30 6B             	LEAX	11,S
+0552  30 6C             	LEAX	12,S
+0554  30 6D             	LEAX	13,S
+0556  30 6E             	LEAX	14,S
+0558  30 6F             	LEAX	15,S
+
+055A  30 70             	LEAX	-16,S
+055C  30 71             	LEAX	-15,S
+055E  30 72             	LEAX	-14,S
+0560  30 73             	LEAX	-13,S
+0562  30 74             	LEAX	-12,S
+0564  30 75             	LEAX	-11,S
+0566  30 76             	LEAX	-10,S
+0568  30 77             	LEAX	-9,S
+056A  30 78             	LEAX	-8,S
+056C  30 79             	LEAX	-7,S
+056E  30 7A             	LEAX	-6,S
+0570  30 7B             	LEAX	-5,S
+0572  30 7C             	LEAX	-4,S
+0574  30 7D             	LEAX	-3,S
+0576  30 7E             	LEAX	-2,S
+0578  30 7F             	LEAX	<-1,S
+
+057A  30 80             	LEAX	,X+
+057C  30 81             	LEAX	,X++
+057E  30 82             	LEAX	,-X
+0580  30 83             	LEAX	,--X
+0582  30 84             	LEAX	,X
+0584  30 85             	LEAX	B,X
+0586  30 86             	LEAX	A,X
+0588  30 87             	LEAX	E,X		; 6309
+058A  30 88 58          	LEAX	<INDEX_B,X
+058D  30 89 4958        	LEAX	>INDEX_W,X
+0591  30 8A             	LEAX	F,X		; 6309
+0593  30 8B             	LEAX	D,X
+0595  30 8C FD          	LEAX	<.,PCR
+0598  30 8C BD          	LEAX	<INDEX_B,PC
+059B  30 8D FFFC        	LEAX	>.,PCR
+059F  30 8D 43B5        	LEAX	>INDEX_W,PC
+05A3  30 8E             	LEAX	W,X		; 6309
+05A5  30 8F             	LEAX	,W		; 6309
+
+05A7  30 90             	LEAX	[,W]		; 6309
+05A9  30 91             	LEAX	[,X++]
+05AB  30 93             	LEAX	[,--X]
+05AD  30 94             	LEAX	[,X]
+05AF  30 95             	LEAX	[B,X]
+05B1  30 96             	LEAX	[A,X]
+05B3  30 97             	LEAX	[E,X]		; 6309
+05B5  30 98 58          	LEAX	[<INDEX_B,X]
+05B8  30 99 4958        	LEAX	[>INDEX_W,X]
+05BC  30 9A             	LEAX	[F,X]		; 6309
+05BE  30 9B             	LEAX	[D,X]
+05C0  30 9C FD          	LEAX	[<.,PCR]
+05C3  30 9C 92          	LEAX	[<INDEX_B,PC]
+05C6  30 9D FFFC        	LEAX	[>.,PCR]
+05CA  30 9D 438A        	LEAX	[>INDEX_W,PC]
+05CE  30 9E             	LEAX	[W,X]		; 6309
+05D0  30 9F 495E        	LEAX	[$495E]
+
+05D4  30 A0             	LEAX	,Y+
+05D6  30 A1             	LEAX	,Y++
+05D8  30 A2             	LEAX	,-Y
+05DA  30 A3             	LEAX	,--Y
+05DC  30 A4             	LEAX	,Y
+05DE  30 A5             	LEAX	B,Y
+05E0  30 A6             	LEAX	A,Y
+05E2  30 A7             	LEAX	E,Y		; 6309
+05E4  30 A8 58          	LEAX	INDEX_B,Y
+05E7  30 A9 4958        	LEAX	INDEX_W,Y
+05EB  30 AA             	LEAX	F,Y		; 6309
+05ED  30 AB             	LEAX	D,Y
+05EF  30 AE             	LEAX	W,Y		; 6309
+05F1  30 AF 4958        	LEAX	>INDEX_W,W	; 6309
+
+05F5  30 B0 4958        	LEAX	[>INDEX_W,W]	; 6309
+05F9  30 B1             	LEAX	[,Y++]
+05FB  30 B3             	LEAX	[,--Y]
+05FD  30 B4             	LEAX	[,Y]
+05FF  30 B5             	LEAX	[B,Y]
+0601  30 B6             	LEAX	[A,Y]
+0603  30 B7             	LEAX	[E,Y]		; 6309
+0605  30 B8 58          	LEAX	[INDEX_B,Y]
+0608  30 B9 4958        	LEAX	[INDEX_W,Y]
+060C  30 BA             	LEAX	[F,Y]		; 6309
+060E  30 BB             	LEAX	[D,Y]
+0610  30 BE             	LEAX	[W,Y]		; 6309
+
+0612  30 C0             	LEAX	,U+
+0614  30 C1             	LEAX	,U++
+0616  30 C2             	LEAX	,-U
+0618  30 C3             	LEAX	,--U
+061A  30 C4             	LEAX	,U
+061C  30 C5             	LEAX	B,U
+061E  30 C6             	LEAX	A,U
+0620  30 C7             	LEAX	E,U		; 6309
+0622  30 C8 58          	LEAX	<INDEX_B,U
+0625  30 C9 4958        	LEAX	>INDEX_W,U
+0629  30 CA             	LEAX	F,U		; 6309
+062B  30 CB             	LEAX	D,U
+062D  30 CE             	LEAX	W,U		; 6309
+062F  30 CF             	LEAX	,W++		; 6309
+
+0631  30 D0             	LEAX	[,W++]		; 6309
+0633  30 D1             	LEAX	[,U++]
+0635  30 D3             	LEAX	[,--U]
+0637  30 D4             	LEAX	[,U]
+0639  30 D5             	LEAX	[B,U]
+063B  30 D6             	LEAX	[A,U]
+063D  30 D7             	LEAX	[E,U]		; 6309
+063F  30 D8 58          	LEAX	[<INDEX_B,U]
+0642  30 D9 4958        	LEAX	[>INDEX_W,U]
+0646  30 DA             	LEAX	[F,U]		; 6309
+0648  30 DB             	LEAX	[D,U]
+064A  30 DE             	LEAX	[W,U]		; 6309
+
+064C  30 E0             	LEAX	,S+
+064E  30 E1             	LEAX	,S++
+0650  30 E2             	LEAX	,-S
+0652  30 E3             	LEAX	,--S
+0654  30 E4             	LEAX	,S
+0656  30 E5             	LEAX	B,S
+0658  30 E6             	LEAX	A,S
+065A  30 E7             	LEAX	E,S		; 6309
+065C  30 E8 58          	LEAX	<INDEX_B,S
+065F  30 E9 4958        	LEAX	>INDEX_W,S
+0663  30 EA             	LEAX	F,S		; 6309
+0665  30 EB             	LEAX	D,S
+0667  30 EE             	LEAX	W,S		; 6309
+0669  30 EF             	LEAX	,--W		; 6309
+
+066B  30 F0             	LEAX	[,--W]		; 6309
+066D  30 F1             	LEAX	[,S++]
+066F  30 F3             	LEAX	[,--S]
+0671  30 F4             	LEAX	[,S]
+0673  30 F5             	LEAX	[B,S]
+0675  30 F6             	LEAX	[A,S]
+0677  30 F7             	LEAX	[E,S]		; 6309
+0679  30 F8 58          	LEAX	[<INDEX_B,S]
+067C  30 F9 4958        	LEAX	[>INDEX_W,S]
+0680  30 FA             	LEAX	[F,S]		; 6309
+0682  30 FB             	LEAX	[D,S]
+0684  30 FE             	LEAX	[W,S]		; 6309
+
+                        ; EXG/TFR registers
+
+0686  1F 01             	TFR	D,X
+0688  1F 23             	TFR	Y,U
+068A  1F 45             	TFR	S,PC
+068C  1F 67             	TFR	W,V	; 6309
+068E  1F 89             	TFR	A,B
+0690  1F AB             	TFR	CC,DP
+0692  1F CD             	TFR	0,00	; 6309 - both zero registers
+0694  1F EF             	TFR	E,F	; 6309
+
+                        ; automatic operand size test
+
+0696  30 01             	LEAX	$1,X	; 5-bit
+0698  30 88 12          	LEAX	$12,X	; 8-bit
+069B  30 89 1234        	LEAX	$1234,X ; 16-bit
+
+069F  10A3 8D 0B90      	CMPD	$1234,PC ; 16-bit
+06A4  10A3 8C FC        	CMPD	.,PCR	; 8-bit
+06A8  10A3 8D FFFB      	CMPD	>.,PCR	; 16-bit
+
+                        ; SETDP test
+
+06AD  96 44             	LDA	DIRECT	; direct page
+06AF  B6 4558           	LDA	EXTEND	; extended
+
+  45                    	SETDP	EXTEND/256
+
+06B2  B6 0044           	LDA	DIRECT	; extended
+06B5  96 58             	LDA	EXTEND	; direct page
+
+06B7                    	END
+
+00000 Total Error(s)
+
+DIRECT             0044 E  EXTEND             4558 E  IMMED_B            0049 E
+IMMED_Q            4144 E  IMMED_W            494D E  INDEX_B            0058 E
+INDEX_W            4958 E

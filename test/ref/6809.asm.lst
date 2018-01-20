@@ -1,0 +1,605 @@
+0000  00 44             	NEG	<$44
+0002  01                	FCB	$01
+0003  02                	FCB	$02
+0004  03 44             	COM	<$44
+0006  04 44             	LSR	<$44
+0008  05                	FCB	$05
+0009  06 44             	ROR	<$44
+000B  07 44             	ASR	<$44
+000D  08 44             	ASL	<$44
+000F  09 44             	ROL	<$44
+0011  0A 44             	DEC	<$44
+0013  0B                	FCB	$0B
+0014  0C 44             	INC	<$44
+0016  0D 44             	TST	<$44
+0018  0E 44             	JMP	<$44
+001A  0F 44             	CLR	<$44
+
+001C  10                	FCB	$10	; 10xx
+001D  11                	FCB	$11	; 11xx
+001E  12                	NOP
+001F  13                	SYNC
+0020  14                	FCB	$14	; TEST
+0021  15                	FCB	$15	; TEST
+0022  16 0000           	LBRA	*+3
+0025  17 0000           	LBSR	*+3
+0028  18                	FCB	$18
+0029  19                	DAA
+002A  1A 49             	ORCC	#$49
+002C  1B                	FCB	$1B
+002D  1C 49             	ANDCC	#$49
+002F  1D                	SEX
+0030  1E 00             	EXG	D,D
+0032  1F 00             	TFR	D,D
+
+0034  20 00             	BRA	*+2
+0036  21 00             	BRN	*+2
+0038  22 00             	BHI	*+2
+003A  23 00             	BLS	*+2
+003C  24 00             	BCC	*+2
+003E  25 00             	BCS	*+2
+0040  26 00             	BNE	*+2
+0042  27 00             	BEQ	*+2
+0044  28 00             	BVC	*+2
+0046  29 00             	BVS	*+2
+0048  2A 00             	BPL	*+2
+004A  2B 00             	BMI	*+2
+004C  2C 00             	BGE	*+2
+004E  2D 00             	BLT	*+2
+0050  2E 00             	BGT	*+2
+0052  2F 00             	BLE	*+2
+
+0054  30 84             	LEAX	,X
+0056  31 84             	LEAY	,X
+0058  32 84             	LEAS	,X
+005A  33 84             	LEAU	,X
+005C  34 FF             	PSHS	CC,D,DP,X,Y,U,PC
+005E  35 FF             	PULS	CC,D,DP,X,Y,U,PC
+0060  36 FF             	PSHU	CC,D,DP,X,Y,S,PC
+0062  37 FF             	PULU	CC,D,DP,X,Y,S,PC
+0064  38                	FCB	$38
+0065  39                	RTS
+0066  3A                	ABX
+0067  3B                	RTI
+0068  3C 49             	CWAI	#$49
+006A  3D                	MUL
+006B  3E                	FCB	$3E	; SWR
+006C  3F                	SWI
+
+006D  40                	NEGA
+006E  41                	FCB	$41
+006F  42                	FCB	$42
+0070  43                	COMA
+0071  44                	LSRA
+0072  45                	FCB	$45
+0073  46                	RORA
+0074  47                	ASRA
+0075  48                	ASLA
+0076  49                	ROLA
+0077  4A                	DECA
+0078  4B                	FCB	$4B
+0079  4C                	INCA
+007A  4D                	TSTA
+007B  4E                	FCB	$4E
+007C  4F                	CLRA
+
+007D  50                	NEGB
+007E  51                	FCB	$51
+007F  52                	FCB	$52
+0080  53                	COMB
+0081  54                	LSRB
+0082  55                	FCB	$55
+0083  56                	RORB
+0084  57                	ASRB
+0085  58                	ASLB
+0086  59                	ROLB
+0087  5A                	DECB
+0088  5B                	FCB	$5B
+0089  5C                	INCB
+008A  5D                	TSTB
+008B  5E                	FCB	$5E
+008C  5F                	CLRB
+
+008D  60 84             	NEG	,X
+008F  61                	FCB	$61
+0090  62                	FCB	$62
+0091  63 84             	COM	,X
+0093  64 84             	LSR	,X
+0095  65                	FCB	$65
+0096  66 84             	ROR	,X
+0098  67 84             	ASR	,X
+009A  68 84             	ASL	,X
+009C  69 84             	ROL	,X
+009E  6A 84             	DEC	,X
+00A0  6B                	FCB	$6B
+00A1  6C 84             	INC	,X
+00A3  6D 84             	TST	,X
+00A5  6E 84             	JMP	,X
+00A7  6F 84             	CLR	,X
+
+00A9  70 4558           	NEG	>$4558
+00AC  71                	FCB	$71
+00AD  72                	FCB	$72
+00AE  73 4558           	COM	>$4558
+00B1  74 4558           	LSR	>$4558
+00B4  75                	FCB	$75
+00B5  76 4558           	ROR	>$4558
+00B8  77 4558           	ASR	>$4558
+00BB  78 4558           	ASL	>$4558
+00BE  79 4558           	ROL	>$4558
+00C1  7A 4558           	DEC	>$4558
+00C4  7B                	FCB	$7B
+00C5  7C 4558           	INC	>$4558
+00C8  7D 4558           	TST	>$4558
+00CB  7E 4558           	JMP	>$4558
+00CE  7F 4558           	CLR	>$4558
+
+00D1  80 49             	SUBA	#$49
+00D3  81 49             	CMPA	#$49
+00D5  82 49             	SBCA	#$49
+00D7  83 494D           	SUBD	#$494D
+00DA  84 49             	ANDA	#$49
+00DC  85 49             	BITA	#$49
+00DE  86 49             	LDA	#$49
+00E0  87                	FCB	$87
+00E1  88 49             	EORA	#$49
+00E3  89 49             	ADCA	#$49
+00E5  8A 49             	ORA	#$49
+00E7  8B 49             	ADDA	#$49
+00E9  8C 494D           	CMPX	#$494D
+00EC  8D 00             	BSR	*+2
+00EE  8E 494D           	LDX	#$494D
+00F1  8F                	FCB	$8F
+
+00F2  90 44             	SUBA	<$44
+00F4  91 44             	CMPA	<$44
+00F6  92 44             	SBCA	<$44
+00F8  93 44             	SUBD	<$44
+00FA  94 44             	ANDA	<$44
+00FC  95 44             	BITA	<$44
+00FE  96 44             	LDA	<$44
+0100  97 44             	STA	<$44
+0102  98 44             	EORA	<$44
+0104  99 44             	ADCA	<$44
+0106  9A 44             	ORA	<$44
+0108  9B 44             	ADDA	<$44
+010A  9C 44             	CMPX	<$44
+010C  9D 44             	JSR	<$44
+010E  9E 44             	LDX	<$44
+0110  9F 44             	STX	<$44
+
+0112  A0 84             	SUBA	,X
+0114  A1 84             	CMPA	,X
+0116  A2 84             	SBCA	,X
+0118  A3 84             	SUBD	,X
+011A  A4 84             	ANDA	,X
+011C  A5 84             	BITA	,X
+011E  A6 84             	LDA	,X
+0120  A7 84             	STA	,X
+0122  A8 84             	EORA	,X
+0124  A9 84             	ADCA	,X
+0126  AA 84             	ORA	,X
+0128  AB 84             	ADDA	,X
+012A  AC 84             	CMPX	,X
+012C  AD 84             	JSR	,X
+012E  AE 84             	LDX	,X
+0130  AF 84             	STX	,X
+
+0132  B0 4558           	SUBA	>$4558
+0135  B1 4558           	CMPA	>$4558
+0138  B2 4558           	SBCA	>$4558
+013B  B3 4558           	SUBD	>$4558
+013E  B4 4558           	ANDA	>$4558
+0141  B5 4558           	BITA	>$4558
+0144  B6 4558           	LDA	>$4558
+0147  B7 4558           	STA	>$4558
+014A  B8 4558           	EORA	>$4558
+014D  B9 4558           	ADCA	>$4558
+0150  BA 4558           	ORA	>$4558
+0153  BB 4558           	ADDA	>$4558
+0156  BC 4558           	CMPX	>$4558
+0159  BD 4558           	JSR	>$4558
+015C  BE 4558           	LDX	>$4558
+015F  BF 4558           	STX	>$4558
+
+0162  C0 49             	SUBB	#$49
+0164  C1 49             	CMPB	#$49
+0166  C2 49             	SBCB	#$49
+0168  C3 494D           	ADDD	#$494D
+016B  C4 49             	ANDB	#$49
+016D  C5 49             	BITB	#$49
+016F  C6 49             	LDB	#$49
+0171  C7                	FCB	$C7
+0172  C8 49             	EORB	#$49
+0174  C9 49             	ADCB	#$49
+0176  CA 49             	ORB	#$49
+0178  CB 49             	ADDB	#$49
+017A  CC 494D           	LDD	#$494D
+017D  CD                	FCB	$CD
+017E  CE 494D           	LDU	#$494D
+0181  CF                	FCB	$CF
+
+0182  D0 44             	SUBB	<$44
+0184  D1 44             	CMPB	<$44
+0186  D2 44             	SBCB	<$44
+0188  D3 44             	ADDD	<$44
+018A  D4 44             	ANDB	<$44
+018C  D5 44             	BITB	<$44
+018E  D6 44             	LDB	<$44
+0190  D7 44             	STB	<$44
+0192  D8 44             	EORB	<$44
+0194  D9 44             	ADCB	<$44
+0196  DA 44             	ORB	<$44
+0198  DB 44             	ADDB	<$44
+019A  DC 44             	LDD	<$44
+019C  DD 44             	STD	<$44
+019E  DE 44             	LDU	<$44
+01A0  DF 44             	STU	<$44
+
+01A2  E0 84             	SUBB	,X
+01A4  E1 84             	CMPB	,X
+01A6  E2 84             	SBCB	,X
+01A8  E3 84             	ADDD	,X
+01AA  E4 84             	ANDB	,X
+01AC  E5 84             	BITB	,X
+01AE  E6 84             	LDB	,X
+01B0  E7 84             	STB	,X
+01B2  E8 84             	EORB	,X
+01B4  E9 84             	ADCB	,X
+01B6  EA 84             	ORB	,X
+01B8  EB 84             	ADDB	,X
+01BA  EC 84             	LDD	,X
+01BC  ED 84             	STD	,X
+01BE  EE 84             	LDU	,X
+01C0  EF 84             	STU	,X
+
+01C2  F0 4558           	SUBB	>$4558
+01C5  F1 4558           	CMPB	>$4558
+01C8  F2 4558           	SBCB	>$4558
+01CB  F3 4558           	ADDD	>$4558
+01CE  F4 4558           	ANDB	>$4558
+01D1  F5 4558           	BITB	>$4558
+01D4  F6 4558           	LDB	>$4558
+01D7  F7 4558           	STB	>$4558
+01DA  F8 4558           	EORB	>$4558
+01DD  F9 4558           	ADCB	>$4558
+01E0  FA 4558           	ORB	>$4558
+01E3  FB 4558           	ADDB	>$4558
+01E6  FC 4558           	LDD	>$4558
+01E9  FD 4558           	STD	>$4558
+01EC  FE 4558           	LDU	>$4558
+01EF  FF 4558           	STU	>$4558
+
+                        ; 10XX
+
+                        ;	LBRA	*+3
+01F2  1021 FFFF         	LBRN	*+3
+01F6  1022 FFFF         	LBHI	*+3
+01FA  1023 FFFF         	LBLS	*+3
+01FE  1024 FFFF         	LBCC	*+3
+0202  1025 FFFF         	LBCS	*+3
+0206  1026 FFFF         	LBNE	*+3
+020A  1027 FFFF         	LBEQ	*+3
+020E  1028 FFFF         	LBVC	*+3
+0212  1029 FFFF         	LBVS	*+3
+0216  102A FFFF         	LBPL	*+3
+021A  102B FFFF         	LBMI	*+3
+021E  102C FFFF         	LBGE	*+3
+0222  102D FFFF         	LBLT	*+3
+0226  102E FFFF         	LBGT	*+3
+022A  102F FFFF         	LBLE	*+3
+
+022E  103F              	SWI2
+
+0230  1083 494D         	CMPD	#$494D
+0234  108C 494D         	CMPY	#$494D
+0238  108E 494D         	LDY	#$494D
+
+023C  1093 44           	CMPD	<$44
+023F  109C 44           	CMPY	<$44
+0242  109E 44           	LDY	<$44
+0245  109F 44           	STY	<$44
+
+0248  10A3 84           	CMPD	,X
+024B  10AC 84           	CMPY	,X
+024E  10AE 84           	LDY	,X
+0251  10AF 84           	STY	,X
+
+0254  10B3 4558         	CMPD	>$4558
+0258  10BC 4558         	CMPY	>$4558
+025C  10BE 4558         	LDY	>$4558
+0260  10BF 4558         	STY	>$4558
+
+0264  10CE 494D         	LDS	#$494D
+
+0268  10DE 44           	LDS	<$44
+026B  10DF 44           	STS	<$44
+
+026E  10EE 84           	LDS	,X
+0271  10EF 84           	STS	,X
+
+0274  10FE 4558         	LDS	>$4558
+0278  10FF 4558         	STS	>$4558
+
+                        ; 11XX
+
+027C  113F              	SWI3
+
+027E  1183 494D         	CMPU	#$494D
+0282  118C 494D         	CMPS	#$494D
+
+0286  1193 44           	CMPU	<$44
+0289  119C 44           	CMPS	<$44
+
+028C  11A3 84           	CMPU	,X
+028F  11AC 84           	CMPS	,X
+
+0292  11B3 4558         	CMPU	>$4558
+0296  11BC 4558         	CMPS	>$4558
+
+                        ; indexed
+
+029A  30 00             	LEAX	0,X
+029C  30 01             	LEAX	1,X
+029E  30 02             	LEAX	2,X
+02A0  30 03             	LEAX	3,X
+02A2  30 04             	LEAX	4,X
+02A4  30 05             	LEAX	5,X
+02A6  30 06             	LEAX	6,X
+02A8  30 07             	LEAX	7,X
+02AA  30 08             	LEAX	8,X
+02AC  30 09             	LEAX	9,X
+02AE  30 0A             	LEAX	10,X
+02B0  30 0B             	LEAX	11,X
+02B2  30 0C             	LEAX	12,X
+02B4  30 0D             	LEAX	13,X
+02B6  30 0E             	LEAX	14,X
+02B8  30 0F             	LEAX	15,X
+
+02BA  30 10             	LEAX	-16,X
+02BC  30 11             	LEAX	-15,X
+02BE  30 12             	LEAX	-14,X
+02C0  30 13             	LEAX	-13,X
+02C2  30 14             	LEAX	-12,X
+02C4  30 15             	LEAX	-11,X
+02C6  30 16             	LEAX	-10,X
+02C8  30 17             	LEAX	-9,X
+02CA  30 18             	LEAX	-8,X
+02CC  30 19             	LEAX	-7,X
+02CE  30 1A             	LEAX	-6,X
+02D0  30 1B             	LEAX	-5,X
+02D2  30 1C             	LEAX	-4,X
+02D4  30 1D             	LEAX	-3,X
+02D6  30 1E             	LEAX	-2,X
+02D8  30 1F             	LEAX	-1,X
+
+02DA  30 20             	LEAX	0,Y
+02DC  30 21             	LEAX	1,Y
+02DE  30 22             	LEAX	2,Y
+02E0  30 23             	LEAX	3,Y
+02E2  30 24             	LEAX	4,Y
+02E4  30 25             	LEAX	5,Y
+02E6  30 26             	LEAX	6,Y
+02E8  30 27             	LEAX	7,Y
+02EA  30 28             	LEAX	8,Y
+02EC  30 29             	LEAX	9,Y
+02EE  30 2A             	LEAX	10,Y
+02F0  30 2B             	LEAX	11,Y
+02F2  30 2C             	LEAX	12,Y
+02F4  30 2D             	LEAX	13,Y
+02F6  30 2E             	LEAX	14,Y
+02F8  30 2F             	LEAX	15,Y
+
+02FA  30 30             	LEAX	-16,Y
+02FC  30 31             	LEAX	-15,Y
+02FE  30 32             	LEAX	-14,Y
+0300  30 33             	LEAX	-13,Y
+0302  30 34             	LEAX	-12,Y
+0304  30 35             	LEAX	-11,Y
+0306  30 36             	LEAX	-10,Y
+0308  30 37             	LEAX	-9,Y
+030A  30 38             	LEAX	-8,Y
+030C  30 39             	LEAX	-7,Y
+030E  30 3A             	LEAX	-6,Y
+0310  30 3B             	LEAX	-5,Y
+0312  30 3C             	LEAX	-4,Y
+0314  30 3D             	LEAX	-3,Y
+0316  30 3E             	LEAX	-2,Y
+0318  30 3F             	LEAX	-1,Y
+
+031A  30 40             	LEAX	0,U
+031C  30 41             	LEAX	1,U
+031E  30 42             	LEAX	2,U
+0320  30 43             	LEAX	3,U
+0322  30 44             	LEAX	4,U
+0324  30 45             	LEAX	5,U
+0326  30 46             	LEAX	6,U
+0328  30 47             	LEAX	7,U
+032A  30 48             	LEAX	8,U
+032C  30 49             	LEAX	9,U
+032E  30 4A             	LEAX	10,U
+0330  30 4B             	LEAX	11,U
+0332  30 4C             	LEAX	12,U
+0334  30 4D             	LEAX	13,U
+0336  30 4E             	LEAX	14,U
+0338  30 4F             	LEAX	15,U
+
+033A  30 50             	LEAX	-16,U
+033C  30 51             	LEAX	-15,U
+033E  30 52             	LEAX	-14,U
+0340  30 53             	LEAX	-13,U
+0342  30 54             	LEAX	-12,U
+0344  30 55             	LEAX	-11,U
+0346  30 56             	LEAX	-10,U
+0348  30 57             	LEAX	-9,U
+034A  30 58             	LEAX	-8,U
+034C  30 59             	LEAX	-7,U
+034E  30 5A             	LEAX	-6,U
+0350  30 5B             	LEAX	-5,U
+0352  30 5C             	LEAX	-4,U
+0354  30 5D             	LEAX	-3,U
+0356  30 5E             	LEAX	-2,U
+0358  30 5F             	LEAX	-1,U
+
+035A  30 60             	LEAX	0,S
+035C  30 61             	LEAX	1,S
+035E  30 62             	LEAX	2,S
+0360  30 63             	LEAX	3,S
+0362  30 64             	LEAX	4,S
+0364  30 65             	LEAX	5,S
+0366  30 66             	LEAX	6,S
+0368  30 67             	LEAX	7,S
+036A  30 68             	LEAX	8,S
+036C  30 69             	LEAX	9,S
+036E  30 6A             	LEAX	10,S
+0370  30 6B             	LEAX	11,S
+0372  30 6C             	LEAX	12,S
+0374  30 6D             	LEAX	13,S
+0376  30 6E             	LEAX	14,S
+0378  30 6F             	LEAX	15,S
+
+037A  30 70             	LEAX	-16,S
+037C  30 71             	LEAX	-15,S
+037E  30 72             	LEAX	-14,S
+0380  30 73             	LEAX	-13,S
+0382  30 74             	LEAX	-12,S
+0384  30 75             	LEAX	-11,S
+0386  30 76             	LEAX	-10,S
+0388  30 77             	LEAX	-9,S
+038A  30 78             	LEAX	-8,S
+038C  30 79             	LEAX	-7,S
+038E  30 7A             	LEAX	-6,S
+0390  30 7B             	LEAX	-5,S
+0392  30 7C             	LEAX	-4,S
+0394  30 7D             	LEAX	-3,S
+0396  30 7E             	LEAX	-2,S
+0398  30 7F             	LEAX	<-1,S
+
+039A  30 80             	LEAX	,X+
+039C  30 81             	LEAX	,X++
+039E  30 82             	LEAX	,-X
+03A0  30 83             	LEAX	,--X
+03A2  30 84             	LEAX	,X
+03A4  30 85             	LEAX	B,X
+03A6  30 86             	LEAX	A,X
+03A8  3087              	FDB	$3087
+03AA  30 88 58          	LEAX	<$58,X
+03AD  30 89 4958        	LEAX	>$4958,X
+03B1  308A              	FDB	$308A
+03B3  30 8B             	LEAX	D,X
+03B5  30 8C FD          	LEAX	<.,PCR
+03B8  30 8C 9D          	LEAX	<$58,PC
+03BB  30 8D FFFC        	LEAX	>.,PCR
+03BF  30 8D 4595        	LEAX	>$4958,PC
+03C3  308E              	FDB	$308E
+03C5  30 8F 4558        	LEAX	$4558
+
+03C9  30 90             	LEAX	[,X+]
+03CB  30 91             	LEAX	[,X++]
+03CD  30 92             	LEAX	[,-X]
+03CF  30 93             	LEAX	[,--X]
+03D1  30 94             	LEAX	[,X]
+03D3  30 95             	LEAX	[B,X]
+03D5  30 96             	LEAX	[A,X]
+03D7  3097              	FDB	$3097
+03D9  30 98 58          	LEAX	[<$58,X]
+03DC  30 99 4958        	LEAX	[>$4958,X]
+03E0  309A              	FDB	$309A
+03E2  30 9B             	LEAX	[D,X]
+03E4  30 9C FD          	LEAX	[<.,PCR]
+03E7  30 9C 6E          	LEAX	[<$58,PC]
+03EA  30 9D FFFC        	LEAX	[>.,PCR]
+03EE  30 9D 4566        	LEAX	[>$4958,PC]
+03F2  309E              	FDB	$309E
+03F4  30 9F 495E        	LEAX	[$495E]
+
+03F8  30 A0             	LEAX	,Y+
+03FA  30 A1             	LEAX	,Y++
+03FC  30 A2             	LEAX	,-Y
+03FE  30 A3             	LEAX	,--Y
+0400  30 A4             	LEAX	,Y
+0402  30 A5             	LEAX	B,Y
+0404  30 A6             	LEAX	A,Y
+0406  30A7              	FDB	$30A7
+0408  30 A8 58          	LEAX	$58,Y
+040B  30 A9 4958        	LEAX	$4958,Y
+040F  30AA              	FDB	$30AA
+0411  30 AB             	LEAX	D,Y
+
+0413  30 B0             	LEAX	[,Y+]
+0415  30 B1             	LEAX	[,Y++]
+0417  30 B2             	LEAX	[,-Y]
+0419  30 B3             	LEAX	[,--Y]
+041B  30 B4             	LEAX	[,Y]
+041D  30 B5             	LEAX	[B,Y]
+041F  30 B6             	LEAX	[A,Y]
+0421  30B7              	FDB	$30B7
+0423  30 B8 58          	LEAX	[$58,Y]
+0426  30 B9 4958        	LEAX	[$4958,Y]
+042A  30BA              	FDB	$30BA
+042C  30 BB             	LEAX	[D,Y]
+
+042E  30 C0             	LEAX	,U+
+0430  30 C1             	LEAX	,U++
+0432  30 C2             	LEAX	,-U
+0434  30 C3             	LEAX	,--U
+0436  30 C4             	LEAX	,U
+0438  30 C5             	LEAX	B,U
+043A  30 C6             	LEAX	A,U
+043C  30 C8 58          	LEAX	<$58,U
+043F  30 C9 4958        	LEAX	>$4958,U
+0443  30 CB             	LEAX	D,U
+
+0445  30 D0             	LEAX	[,U+]
+0447  30 D1             	LEAX	[,U++]
+0449  30 D2             	LEAX	[,-U]
+044B  30 D3             	LEAX	[,--U]
+044D  30 D4             	LEAX	[,U]
+044F  30 D5             	LEAX	[B,U]
+0451  30 D6             	LEAX	[A,U]
+0453  30 D8 58          	LEAX	[<$58,U]
+0456  30 D9 4958        	LEAX	[>$4958,U]
+045A  30 DB             	LEAX	[D,U]
+
+045C  30 E0             	LEAX	,S+
+045E  30 E1             	LEAX	,S++
+0460  30 E2             	LEAX	,-S
+0462  30 E3             	LEAX	,--S
+0464  30 E4             	LEAX	,S
+0466  30 E5             	LEAX	B,S
+0468  30 E6             	LEAX	A,S
+046A  30 E8 58          	LEAX	<$58,S
+046D  30 E9 4958        	LEAX	>$4958,S
+0471  30 EB             	LEAX	D,S
+
+0473  30 F0             	LEAX	[,S+]
+0475  30 F1             	LEAX	[,S++]
+0477  30 F2             	LEAX	[,-S]
+0479  30 F3             	LEAX	[,--S]
+047B  30 F4             	LEAX	[,S]
+047D  30 F5             	LEAX	[B,S]
+047F  30 F6             	LEAX	[A,S]
+0481  30 F8 58          	LEAX	[<$58,S]
+0484  30 F9 4958        	LEAX	[>$4958,S]
+0488  30 FB             	LEAX	[D,S]
+
+                        ; tests
+
+048A  96 44             	LDA	$44
+048C  B6 4548           	LDA	$4548
+
+  45                    	SETDP	$45
+
+048F  B6 0044           	LDA	$44
+0492  96 48             	LDA	$4548
+
+0494  30 88 58          	LEAX	$58,X
+0497  30 89 4558        	LEAX	$4558,X
+049B  10A3 8D 0D94      	CMPD	$1234,PC
+04A0  10A3 8C FC        	CMPD	.,PCR
+04A4  10A3 8D FFFB      	CMPD	>.,PCR
+
+04A9                    	END
+
+00000 Total Error(s)
+

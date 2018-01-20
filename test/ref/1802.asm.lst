@@ -1,0 +1,290 @@
+                        ;	all 1802 opcodes
+
+0000  00                	IDL		; 00	wait for interrupt or DMA
+0001  01                	LDN	R1	; 01	D = M(R1)
+0002  02                	LDN	R2	; 02	D = M(R2)
+0003  03                	LDN	R3	; 03	D = M(R3)
+0004  04                	LDN	R4	; 04	D = M(R4)
+0005  05                	LDN	R5	; 05	D = M(R5)
+0006  06                	LDN	R6	; 06	D = M(R6)
+0007  07                	LDN	R7	; 07	D = M(R7)
+0008  08                	LDN	R8	; 08	D = M(R8)
+0009  09                	LDN	R9	; 09	D = M(R9)
+000A  0A                	LDN	RA	; 0A	D = M(RA)
+000B  0B                	LDN	RB	; 0B	D = M(RB)
+000C  0C                	LDN	RC	; 0C	D = M(RC)
+000D  0D                	LDN	RD	; 0D	D = M(RD)
+000E  0E                	LDN	RE	; 0E	D = M(RE)
+000F  0F                	LDN	RF	; 0F	D = M(RF)
+
+0010  10                	INC	R0	; 10	R0 = R0 + 1
+0011  11                	INC	R1	; 11	R1 = R1 + 1
+0012  12                	INC	R2	; 12	R2 = R2 + 1
+0013  13                	INC	R3	; 13	R3 = R3 + 1
+0014  14                	INC	R4	; 14	R4 = R4 + 1
+0015  15                	INC	R5	; 15	R5 = R5 + 1
+0016  16                	INC	R6	; 16	R6 = R6 + 1
+0017  17                	INC	R7	; 17	R7 = R7 + 1
+0018  18                	INC	R8	; 18	R8 = R8 + 1
+0019  19                	INC	R9	; 19	R9 = R9 + 1
+001A  1A                	INC	RA	; 1A	RA = RA + 1
+001B  1B                	INC	RB	; 1B	RB = RB + 1
+001C  1C                	INC	RC	; 1C	RC = RC + 1
+001D  1D                	INC	RD	; 1D	RD = RD + 1
+001E  1E                	INC	RE	; 1E	RE = RE + 1
+001F  1F                	INC	RF	; 1F	RF = RF + 1
+
+0020  20                	DEC	R0	; 20	R0 = R0 - 1
+0021  21                	DEC	R1	; 21	R1 = R1 - 1
+0022  22                	DEC	R2	; 22	R2 = R2 - 1
+0023  23                	DEC	R3	; 23	R3 = R3 - 1
+0024  24                	DEC	R4	; 24	R4 = R4 - 1
+0025  25                	DEC	R5	; 25	R5 = R5 - 1
+0026  26                	DEC	R6	; 26	R6 = R6 - 1
+0027  27                	DEC	R7	; 27	R7 = R7 - 1
+0028  28                	DEC	R8	; 28	R8 = R8 - 1
+0029  29                	DEC	R9	; 29	R9 = R9 - 1
+002A  2A                	DEC	RA	; 2A	RA = RA - 1
+002B  2B                	DEC	RB	; 2B	RB = RB - 1
+002C  2C                	DEC	RC	; 2C	RC = RC - 1
+002D  2D                	DEC	RD	; 2D	RD = RD - 1
+002E  2E                	DEC	RE	; 2E	RE = RE - 1
+002F  2F                	DEC	RF	; 2F	RF = RF - 1
+
+0030  30 31             	BR	.+1	; 30 nn	- branch always
+0032  31 33             	BQ	.+1	; 31 nn - branch if Q=1
+0034  32 35             	BZ	.+1	; 32 nn - branch if D=0
+0036  33 37             	BDF	.+1	; 33 nn - branch if DF=1 (aka BPZ BGE)
+0038  34 39             	B1	.+1	; 34 nn - branch if EF1=1
+003A  35 3B             	B2	.+1	; 35 nn - branch if EF2=1
+003C  36 3D             	B3	.+1	; 36 nn - branch if EF3=1
+003E  37 3F             	B4	.+1	; 37 nn - branch if EF4=1
+0040  38                	SKP		; 38	RP = RP + 1 (skip next byte) (aka NBR nn)
+0041  39 42             	BNQ	.+1	; 39 nn - branch if Q=0
+0043  3A 44             	BNZ	.+1	; 3A nn - branch if D!=0
+0045  3B 46             	BNF	.+1	; 3B nn - branch if DF=0 (aka BM BL)
+0047  3C 48             	BN1	.+1	; 3C nn - branch if EF1=0
+0049  3D 4A             	BN2	.+1	; 3D nn - branch if EF2=0
+004B  3E 4C             	BN3	.+1	; 3E nn - branch if EF3=0
+004D  3F 4E             	BN4	.+1	; 3F nn - branch if EF4=0
+
+004F  40                	LDA	R0	; 40	D = M(R0); R0 = R0 + 1
+0050  41                	LDA	R1	; 41	D = M(R1); R1 = R1 + 1
+0051  42                	LDA	R2	; 42	D = M(R2); R2 = R2 + 1
+0052  43                	LDA	R3	; 43	D = M(R3); R3 = R3 + 1
+0053  44                	LDA	R4	; 44	D = M(R4); R4 = R4 + 1
+0054  45                	LDA	R5	; 45	D = M(R5); R5 = R5 + 1
+0055  46                	LDA	R6	; 46	D = M(R6); R6 = R6 + 1
+0056  47                	LDA	R7	; 47	D = M(R7); R7 = R7 + 1
+0057  48                	LDA	R8	; 48	D = M(R8); R8 = R8 + 1
+0058  49                	LDA	R9	; 49	D = M(R9); R9 = R9 + 1
+0059  4A                	LDA	RA	; 4A	D = M(RA); RA = RA + 1
+005A  4B                	LDA	RB	; 4B	D = M(RB); RB = RB + 1
+005B  4C                	LDA	RC	; 4C	D = M(RC); RC = RC + 1
+005C  4D                	LDA	RD	; 4D	D = M(RD); RD = RD + 1
+005D  4E                	LDA	RE	; 4E	D = M(RE); RE = RE + 1
+005E  4F                	LDA	RF	; 4F	D = M(RF); RF = RF + 1
+
+005F  50                	STR	R0	; 50	M(R0) = D
+0060  51                	STR	R1	; 51	M(R1) = D
+0061  52                	STR	R2	; 52	M(R2) = D
+0062  53                	STR	R3	; 53	M(R3) = D
+0063  54                	STR	R4	; 54	M(R4) = D
+0064  55                	STR	R5	; 55	M(R5) = D
+0065  56                	STR	R6	; 56	M(R6) = D
+0066  57                	STR	R7	; 57	M(R7) = D
+0067  58                	STR	R8	; 58	M(R8) = D
+0068  59                	STR	R9	; 59	M(R9) = D
+0069  5A                	STR	RA	; 5A	M(RA) = D
+006A  5B                	STR	RB	; 5B	M(RB) = D
+006B  5C                	STR	RC	; 5C	M(RC) = D
+006C  5D                	STR	RD	; 5D	M(RD) = D
+006D  5E                	STR	RE	; 5E	M(RE) = D
+006E  5F                	STR	RF	; 5F	M(RF) = D
+
+006F  60                	IRX		; 60	X = X + 1
+0070  61                	OUT	1	; 61	bus = M(RX); RX = RX + 1
+0071  62                	OUT	2	; 62	bus = M(RX); RX = RX + 1
+0072  63                	OUT	3	; 63	bus = M(RX); RX = RX + 1
+0073  64                	OUT	4	; 64	bus = M(RX); RX = RX + 1
+0074  65                	OUT	5	; 65	bus = M(RX); RX = RX + 1
+0075  66                	OUT	6	; 66	bus = M(RX); RX = RX + 1
+0076  67                	OUT	7	; 67	bus = M(RX); RX = RX + 1
+0077  68                	DB	68H	; 68	undefined opcode?
+0078  69                	INP	1	; 69	M(RX) = bus; D = bus
+0079  6A                	INP	2	; 6A	M(RX) = bus; D = bus
+007A  6B                	INP	3	; 6B	M(RX) = bus; D = bus
+007B  6C                	INP	4	; 6C	M(RX) = bus; D = bus
+007C  6D                	INP	5	; 6D	M(RX) = bus; D = bus
+007D  6E                	INP	6	; 6E	M(RX) = bus; D = bus
+007E  6F                	INP	7	; 6F	M(RX) = bus; D = bus
+
+007F  70                	RET		; 70	X,P = M(RX); RX = RX + 1; IE = 1
+0080  71                	DIS		; 71	X,P = M(RX); RX = RX + 1; IE = 0
+0081  72                	LDXA		; 72	D = M(RX); RX = RX + 1
+0082  73                	STXD		; 73	M(RX) = D; RX = RX - 1
+0083  74                	ADC		; 74	DF,D = M(RX) + D + DF
+0084  75                	SDB		; 75	DF,D = M(RX) - D - !DF
+0085  76                	SHRC		; 76	D = D >> 1; DF = LSB(D); MSB(D) = DF (aka RSHR)
+0086  77                	SMB		; 77	DF,D = D - M(RX) - !DF
+0087  78                	SAV		; 78	M(RX) = T
+0088  79                	MARK		; 79	T = X,P; M(R2) = X,P; X = P; R2 = R2 - 1
+0089  7A                	REQ		; 7A	Q = 0
+008A  7B                	SEQ		; 7B	Q = 1
+008B  7C 00             	ADCI	00H	; 7C nn	D,DF = M(RP) + D + DF; RP = RP + 1
+008D  7D 00             	SDBI	00H	; 7D nn	D,DF = M(RP) - D - !DF; RP = RP + 1
+008F  7E                	SHLC		; 7E	D = D << 1; DF = MSB(D); LSB(D) = DF (aka RSHL)
+0090  7F 00             	SMBI	00H	; 7F nn	DF,D = D - M(RP) - !DF; RP = RP + 1
+
+0092  80                	GLO	R0	; 80	D = R0.lo
+0093  81                	GLO	R1	; 81	D = R.lo
+0094  82                	GLO	R2	; 82	D = R.lo
+0095  83                	GLO	R3	; 83	D = R.lo
+0096  84                	GLO	R4	; 84	D = R.lo
+0097  85                	GLO	R5	; 85	D = R.lo
+0098  86                	GLO	R6	; 86	D = R.lo
+0099  87                	GLO	R7	; 87	D = R.lo
+009A  88                	GLO	R8	; 88	D = R.lo
+009B  89                	GLO	R9	; 89	D = R.lo
+009C  8A                	GLO	RA	; 8A	D = R.lo
+009D  8B                	GLO	RB	; 8B	D = R.lo
+009E  8C                	GLO	RC	; 8C	D = R.lo
+009F  8D                	GLO	RD	; 8D	D = R.lo
+00A0  8E                	GLO	RE	; 8E	D = R.lo
+00A1  8F                	GLO	RF	; 8F	D = R.lo
+
+00A2  90                	GHI	R0	; 90	D = R0.hi
+00A3  91                	GHI	R1	; 91	D = R.hi
+00A4  92                	GHI	R2	; 92	D = R.hi
+00A5  93                	GHI	R3	; 93	D = R.hi
+00A6  94                	GHI	R4	; 94	D = R.hi
+00A7  95                	GHI	R5	; 95	D = R.hi
+00A8  96                	GHI	R6	; 96	D = R.hi
+00A9  97                	GHI	R7	; 97	D = R.hi
+00AA  98                	GHI	R8	; 98	D = R.hi
+00AB  99                	GHI	R9	; 99	D = R.hi
+00AC  9A                	GHI	RA	; 9A	D = R.hi
+00AD  9B                	GHI	RB	; 9B	D = R.hi
+00AE  9C                	GHI	RC	; 9C	D = R.hi
+00AF  9D                	GHI	RD	; 9D	D = R.hi
+00B0  9E                	GHI	RE	; 9E	D = R.hi
+00B1  9F                	GHI	RF	; 9F	D = R.hi
+
+00B2  A0                	PLO	R0	; A0	R0.lo = D
+00B3  A1                	PLO	R1	; A1	R.lo = D
+00B4  A2                	PLO	R2	; A2	R.lo = D
+00B5  A3                	PLO	R3	; A3	R.lo = D
+00B6  A4                	PLO	R4	; A4	R.lo = D
+00B7  A5                	PLO	R5	; A5	R.lo = D
+00B8  A6                	PLO	R6	; A6	R.lo = D
+00B9  A7                	PLO	R7	; A7	R.lo = D
+00BA  A8                	PLO	R8	; A8	R.lo = D
+00BB  A9                	PLO	R9	; A9	R.lo = D
+00BC  AA                	PLO	RA	; AA	R.lo = D
+00BD  AB                	PLO	RB	; AB	R.lo = D
+00BE  AC                	PLO	RC	; AC	R.lo = D
+00BF  AD                	PLO	RD	; AD	R.lo = D
+00C0  AE                	PLO	RE	; AE	R.lo = D
+00C1  AF                	PLO	RF	; AF	R.lo = D
+
+00C2  B0                	PHI	R0	; B0	R0.hi = D
+00C3  B1                	PHI	R1	; B1	R.hi = D
+00C4  B2                	PHI	R2	; B2	R.hi = D
+00C5  B3                	PHI	R3	; B3	R.hi = D
+00C6  B4                	PHI	R4	; B4	R.hi = D
+00C7  B5                	PHI	R5	; B5	R.hi = D
+00C8  B6                	PHI	R6	; B6	R.hi = D
+00C9  B7                	PHI	R7	; B7	R.hi = D
+00CA  B8                	PHI	R8	; B8	R.hi = D
+00CB  B9                	PHI	R9	; B9	R.hi = D
+00CC  BA                	PHI	RA	; BA	R.hi = D
+00CD  BB                	PHI	RB	; BB	R.hi = D
+00CE  BC                	PHI	RC	; BC	R.hi = D
+00CF  BD                	PHI	RD	; BD	R.hi = D
+00D0  BE                	PHI	RE	; BE	R.hi = D
+00D1  BF                	PHI	RF	; BF	R.hi = D
+
+00D2  C0 00D2           	LBR	.	; C0 nnnn - long branch always
+00D5  C1 00D5           	LBQ	.	; C1 nnnn - long branch if Q=1
+00D8  C2 00D8           	LBZ	.	; C2 nnnn - long branch if D=0
+00DB  C3 00DB           	LBDF	.	; C3 nnnn - long branch if DF=1
+00DE  C4                	NOP		; C4	no-operation
+00DF  C5                	LSNQ		; C5	skip 2 bytes if Q=0
+00E0  C6                	LSNZ		; C6	skip 2 bytes if D!=0
+00E1  C7                	LSNF		; C7	skip 2 bytes if DF=0
+00E2  C8                	LSKP		; C8	RP = RP + 2 (skip 2 bytes) (aka NLBR nnnn)
+00E3  C9 00E3           	LBNQ	.	; C9 nnnn - long branch if Q=0
+00E6  CA 00E6           	LBNZ	.	; CA nnnn - long branch if D!=0
+00E9  CB 00E9           	LBNF	.	; CB nnnn - long branch if DF=0
+00EC  CC                	LSIE		; CC	skip 2 bytes if IE=1
+00ED  CD                	LSQ		; CD	skip 2 bytes if Q=1
+00EE  CE                	LSZ		; CE	skip 2 bytes if D=0
+00EF  CF                	LSDF		; CF	skip 2 bytes if DF=1
+
+00F0  D0                	SEP	R0	; D0	P = 0
+00F1  D1                	SEP	R1	; D1	P = 1
+00F2  D2                	SEP	R2	; D2	P = 2
+00F3  D3                	SEP	R3	; D3	P = 3
+00F4  D4                	SEP	R4	; D4	P = 4
+00F5  D5                	SEP	R5	; D5	P = 5
+00F6  D6                	SEP	R6	; D6	P = 6
+00F7  D7                	SEP	R7	; D7	P = 7
+00F8  D8                	SEP	R8	; D8	P = 8
+00F9  D9                	SEP	R9	; D9	P = 9
+00FA  DA                	SEP	RA	; DA	P = A
+00FB  DB                	SEP	RB	; DB	P = B
+00FC  DC                	SEP	RC	; DC	P = C
+00FD  DD                	SEP	RD	; DD	P = D
+00FE  DE                	SEP	RE	; DE	P = E
+00FF  DF                	SEP	RF	; DF	P = F
+
+0100  E0                	SEX	R0	; E0	X = 0
+0101  E1                	SEX	R1	; E1	X = 1
+0102  E2                	SEX	R2	; E2	X = 2
+0103  E3                	SEX	R3	; E3	X = 3
+0104  E4                	SEX	R4	; E4	X = 4
+0105  E5                	SEX	R5	; E5	X = 5
+0106  E6                	SEX	R6	; E6	X = 6
+0107  E7                	SEX	R7	; E7	X = 7
+0108  E8                	SEX	R8	; E8	X = 8
+0109  E9                	SEX	R9	; E9	X = 9
+010A  EA                	SEX	RA	; EA	X = A
+010B  EB                	SEX	RB	; EB	X = B
+010C  EC                	SEX	RC	; EC	X = C
+010D  ED                	SEX	RD	; ED	X = D
+010E  EE                	SEX	RE	; EE	X = E
+010F  EF                	SEX	RF	; EF	X = F
+
+0110  F0                	LDX		; F0	D = M(RX)
+0111  F1                	OR		; F1	D = D | M(RX)
+0112  F2                	AND		; F2	D = D & M(RX)
+0113  F3                	XOR		; F3	D = D ^ M(RX)
+0114  F4                	ADD		; F4	DF,D = M(RX) + D
+0115  F5                	SD		; F5	DF,D = M(RX) - D
+0116  F6                	SHR		; F6	D = D >> 1; DF = LSB(D); MSB(D) = 0
+0117  F7                	SM		; F7	DF,D = D - M(RX)
+0118  F8 00             	LDI	00H	; F8 nn	D = M(RP); RP = RP + 1
+011A  F9 00             	ORI	00H	; F9 nn	D = D | M(RP); RP = RP + 1	
+011C  FA 00             	ANI	00H	; FA nn	D = D & M(RP); RP = RP + 1
+011E  FB 00             	XRI	00H	; FB nn	D = D ^ M(RP); RP = RP + 1
+0120  FC 00             	ADI	00H	; FC nn	DF,D = M(RP) + D; RP = RP + 1
+0122  FD 00             	SDI	00H	; FD nn	DF,D = M(RP) - D; RP = RP + 1
+0124  FE                	SHL		; FE	D = D >> 1; DF = MSB(D); LSB(D) = 0
+0125  FF 00             	SMI	00H	; FF nn	DF,D = D - M(RP) - !DF; RP = RP + 1
+
+                        ;	duplicate opcodes
+
+0127  38 28             	NBR	.+1	; 38 nn - never branch
+0129  33 2A             	BPZ	.+1	; 33 nn - branch if positive or zero
+012B  33 2C             	BGE	.+1	; 33 nn - branch if greater-than or equal
+012D  3B 2E             	BM	.+1	; 3B nn - branch if minus
+012F  3B 30             	BL	.+1	; 3B nn - branch if less-than
+0131  C8 0131           	NLBR	.	; C8 nnnn - never long branch
+0134  76                	RSHR		; 76	ring shift right
+0135  7E                	RSHL		; 7E	ring shift left
+
+                        	IF	0
+                        	ENDIF
+
+00000 Total Error(s)
+

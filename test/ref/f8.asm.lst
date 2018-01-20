@@ -1,0 +1,293 @@
+                        ; Fairchild F8 instruction set
+
+0000  00                	LR	A,KU		; 00
+0001  01                	LR	A,KL		; 01
+0002  02                	LR	A,QU		; 02
+0003  03                	LR	A,QL		; 03
+0004  04                	LR	KU,A		; 04
+0005  05                	LR	KL,A		; 05
+0006  06                	LR	QU,A		; 06
+0007  07                	LR	QL,A		; 07
+
+0008  08                	LR	K,PC1		; 08
+0009  09                	LR	PC1,K		; 09
+000A  0A                	LR	A,IS		; 0A
+000B  0B                	LR	IS,A		; 0B
+000C  0C                	PK			; 0C
+000D  0D                	LR	PC0,Q		; 0D
+000E  0E                	LR	Q,DC0		; 0E
+000F  0F                	LR	DC0,Q		; 0F
+
+0010  10                	LR	DC0,H		; 10
+0011  11                	LR	H,DC0		; 11
+0012  12                	SR	1		; 12
+0013  13                	SL	1		; 13
+0014  14                	SR	4		; 14
+0015  15                	SL	4		; 15
+0016  16                	LM			; 16
+0017  17                	ST			; 17
+
+0018  18                	COM			; 18
+0019  19                	LNK			; 19
+001A  1A                	DI			; 1A
+001B  1B                	EI			; 1B
+001C  1C                	POP			; 1C
+001D  1D                	LR	W,J		; 1D
+001E  1E                	LR	J,W		; 1E
+001F  1F                	INC			; 1F
+
+0020  20 49             	LI	'I'		; 20 49
+0022  21 49             	NI	'I'		; 21 49
+0024  22 49             	OI	'I'		; 22 49
+0026  23 49             	XI	'I'		; 23 49
+0028  24 49             	AI	'I'		; 24 49
+002A  25 49             	CI	'I'		; 25 49
+002C  26 50             	IN	'P'		; 26 50
+002E  27 50             	OUT	'P'		; 27 50
+
+0030  28 4144           	PI	'AD'		; 28 41 44
+0033  29 4144           	JMP	'AD'		; 29 41 44
+0036  2A 4144           	DCI	'AD'		; 2A 41 44
+0039  2B                	NOP			; 2B
+003A  2C                	XDC			; 2C
+003B  2D                	DB	$2D		; 2D (undefined)
+003C  2E                	DB	$2E		; 2E (undefined)
+003D  2F                	DB	$2F		; 2F (undefined)
+
+003E  30                	DS	0		; 30
+003F  31                	DS	1		; 31
+0040  32                	DS	2		; 32
+0041  33                	DS	3		; 33
+0042  34                	DS	4		; 34
+0043  35                	DS	5		; 35
+0044  36                	DS	6		; 36
+0045  37                	DS	7		; 37
+0046  38                	DS	8		; 38
+0047  39                	DS	9		; 39
+0048  3A                	DS	10		; 3A
+0049  3B                	DS	11		; 3B
+004A  3C                	DS	S		; 3C
+004B  3D                	DS	I		; 3D
+004C  3E                	DS	D		; 3E
+004D  3F                	DB	$3F		; 3F (undefined)
+
+004E  40                	LR	A,0		; 40
+004F  41                	LR	A,1		; 41
+0050  42                	LR	A,2		; 42
+0051  43                	LR	A,3		; 43
+0052  44                	LR	A,4		; 44
+0053  45                	LR	A,5		; 45
+0054  46                	LR	A,6		; 46
+0055  47                	LR	A,7		; 47
+0056  48                	LR	A,8		; 48
+0057  49                	LR	A,9		; 49
+0058  4A                	LR	A,10		; 4A - this is why register numbers must be decimal!
+0059  4B                	LR	A,11		; 4B
+005A  4C                	LR	A,S		; 4C
+005B  4D                	LR	A,I		; 4D
+005C  4E                	LR	A,D		; 4E
+005D  4F                	DB	$4F		; 4F (undefined)
+
+005E  50                	LR	0,A		; 50
+005F  51                	LR	1,A		; 51
+0060  52                	LR	2,A		; 52
+0061  53                	LR	3,A		; 53
+0062  54                	LR	4,A		; 54
+0063  55                	LR	5,A		; 55
+0064  56                	LR	6,A		; 56
+0065  57                	LR	7,A		; 57
+0066  58                	LR	8,A		; 58
+0067  59                	LR	9,A		; 59
+0068  5A                	LR	10,A		; 5A - this is why register numbers must be decimal!
+0069  5B                	LR	11,A		; 5B
+006A  5C                	LR	S,A		; 5C
+006B  5D                	LR	I,A		; 5D
+006C  5E                	LR	D,A		; 5E
+006D  5F                	DB	$5F		; 5F (undefined)
+
+006E  60                	LISU	0		; 60
+006F  61                	LISU	1		; 61
+0070  62                	LISU	2		; 62
+0071  63                	LISU	3		; 63
+0072  64                	LISU	4		; 64
+0073  65                	LISU	5		; 65
+0074  66                	LISU	6		; 66
+0075  67                	LISU	7		; 67
+
+0076  68                	LISL	0		; 68
+0077  69                	LISL	1		; 69
+0078  6A                	LISL	2		; 6A
+0079  6B                	LISL	3		; 6B
+007A  6C                	LISL	4		; 6C
+007B  6D                	LISL	5		; 6D
+007C  6E                	LISL	6		; 6E
+007D  6F                	LISL	7		; 6F
+
+007E  70                	LIS	0		; 70
+007F  71                	LIS	1		; 71
+0080  72                	LIS	2		; 72
+0081  73                	LIS	3		; 73
+0082  74                	LIS	4		; 74
+0083  75                	LIS	5		; 75
+0084  76                	LIS	6		; 76
+0085  77                	LIS	7		; 77
+0086  78                	LIS	8		; 78
+0087  79                	LIS	9		; 79
+0088  7A                	LIS	10		; 7A
+0089  7B                	LIS	11		; 7B
+008A  7C                	LIS	12		; 7C
+008B  7D                	LIS	13		; 7D
+008C  7E                	LIS	14		; 7E
+008D  7F                	LIS	15		; 7F
+
+008E  80 FF             	BT	0,.		; 80 FF
+0090  81 FF             	BT	1,.		; 81 FF
+0092  82 FF             	BT	2,.		; 82 FF
+0094  83 FF             	BT	3,.		; 83 FF
+0096  84 FF             	BT	4,.		; 84 FF
+0098  85 FF             	BT	5,.		; 85 FF
+009A  86 FF             	BT	6,.		; 86 FF
+009C  87 FF             	BT	7,.		; 87 FF
+
+009E  88                	AM			; 88
+009F  89                	AMD			; 89
+00A0  8A                	NM			; 8A
+00A1  8B                	OM			; 8B
+00A2  8C                	XM			; 8C
+00A3  8D                	CM			; 8D
+00A4  8E                	ADC			; 8E
+00A5  8F FF             	BR7	.		; 8F FF
+
+00A7  90 FF             	BF	0,.		; 90 FF
+00A9  91 FF             	BF	1,.		; 91 FF
+00AB  92 FF             	BF	2,.		; 92 FF
+00AD  93 FF             	BF	3,.		; 93 FF
+00AF  94 FF             	BF	4,.		; 94 FF
+00B1  95 FF             	BF	5,.		; 95 FF
+00B3  96 FF             	BF	6,.		; 96 FF
+00B5  97 FF             	BF	7,.		; 97 FF
+00B7  98 FF             	BF	8,.		; 98 FF
+00B9  99 FF             	BF	9,.		; 99 FF
+00BB  9A FF             	BF	10,.		; 9A FF
+00BD  9B FF             	BF	11,.		; 9B FF
+00BF  9C FF             	BF	12,.		; 9C FF
+00C1  9D FF             	BF	13,.		; 9D FF
+00C3  9E FF             	BF	14,.		; 9E FF
+00C5  9F FF             	BF	15,.		; 9F FF
+
+00C7  A0                	INS	0		; A0
+00C8  A1                	INS	1		; A1
+00C9  A2                	INS	2		; A2
+00CA  A3                	INS	3		; A3
+00CB  A4                	INS	4		; A4
+00CC  A5                	INS	5		; A5
+00CD  A6                	INS	6		; A6
+00CE  A7                	INS	7		; A7
+00CF  A8                	INS	8		; A8
+00D0  A9                	INS	9		; A9
+00D1  AA                	INS	10		; AA
+00D2  AB                	INS	11		; AB
+00D3  AC                	INS	12		; AC
+00D4  AD                	INS	13		; AD
+00D5  AE                	INS	14		; AE
+00D6  AF                	INS	15		; AF
+
+00D7  B0                	OUTS	0		; B0
+00D8  B1                	OUTS	1		; B1
+00D9  B2                	OUTS	2		; B2
+00DA  B3                	OUTS	3		; B3
+00DB  B4                	OUTS	4		; B4
+00DC  B5                	OUTS	5		; B5
+00DD  B6                	OUTS	6		; B6
+00DE  B7                	OUTS	7		; B7
+00DF  B8                	OUTS	8		; B8
+00E0  B9                	OUTS	9		; B9
+00E1  BA                	OUTS	10		; BA
+00E2  BB                	OUTS	11		; BB
+00E3  BC                	OUTS	12		; BC
+00E4  BD                	OUTS	13		; BD
+00E5  BE                	OUTS	14		; BE
+00E6  BF                	OUTS	15		; BF
+
+00E7  C0                	AS	0		; C0
+00E8  C1                	AS	1		; C1
+00E9  C2                	AS	2		; C2
+00EA  C3                	AS	3		; C3
+00EB  C4                	AS	4		; C4
+00EC  C5                	AS	5		; C5
+00ED  C6                	AS	6		; C6
+00EE  C7                	AS	7		; C7
+00EF  C8                	AS	8		; C8
+00F0  C9                	AS	9		; C9
+00F1  CA                	AS	10		; CA
+00F2  CB                	AS	11		; CB
+00F3  CC                	AS	S		; CC
+00F4  CD                	AS	I		; CD
+00F5  CE                	AS	D		; CE
+00F6  CF                	DB	$CF		; CF (undefined)
+
+00F7  D0                	ASD	0		; D0
+00F8  D1                	ASD	1		; D1
+00F9  D2                	ASD	2		; D2
+00FA  D3                	ASD	3		; D3
+00FB  D4                	ASD	4		; D4
+00FC  D5                	ASD	5		; D5
+00FD  D6                	ASD	6		; D6
+00FE  D7                	ASD	7		; D7
+00FF  D8                	ASD	8		; D8
+0100  D9                	ASD	9		; D9
+0101  DA                	ASD	10		; DA
+0102  DB                	ASD	11		; DB
+0103  DC                	ASD	S		; DC
+0104  DD                	ASD	I		; DD
+0105  DE                	ASD	D		; DE
+0106  DF                	DB	$DF		; DF (undefined)
+
+0107  E0                	XS	0		; E0
+0108  E1                	XS	1		; E1
+0109  E2                	XS	2		; E2
+010A  E3                	XS	3		; E3
+010B  E4                	XS	4		; E4
+010C  E5                	XS	5		; E5
+010D  E6                	XS	6		; E6
+010E  E7                	XS	7		; E7
+010F  E8                	XS	8		; E8
+0110  E9                	XS	9		; E9
+0111  EA                	XS	10		; EA
+0112  EB                	XS	11		; EB
+0113  EC                	XS	S		; EC
+0114  ED                	XS	I		; ED
+0115  EE                	XS	D		; EE
+0116  EF                	DB	$EF		; EF (undefined)
+
+0117  F0                	NS	0		; F0
+0118  F1                	NS	1		; F1
+0119  F2                	NS	2		; F2
+011A  F3                	NS	3		; F3
+011B  F4                	NS	4		; F4
+011C  F5                	NS	5		; F5
+011D  F6                	NS	6		; F6
+011E  F7                	NS	7		; F7
+011F  F8                	NS	8		; F8
+0120  F9                	NS	9		; F9
+0121  FA                	NS	10		; FA
+0122  FB                	NS	11		; FB
+0123  FC                	NS	S		; FC
+0124  FD                	NS	I		; FD
+0125  FE                	NS	D		; FE
+0126  FF                	DB	$FF		; FF (undefined)
+
+                        ; alternate mnemonics
+
+0127  70                	CLR			; 70
+0128  81 FF             	BP	.		; 81 FF
+012A  82 FF             	BC	.		; 82 FF
+012C  84 FF             	BZ	.		; 84 FF
+012E  90 FF             	BR	.		; 90 FF
+0130  91 FF             	BM	.		; 91 FF
+0132  92 FF             	BNC	.		; 92 FF
+0134  94 FF             	BNZ	.		; 94 FF
+0136  98 FF             	BNO	.		; 98 FF
+
+00000 Total Error(s)
+
