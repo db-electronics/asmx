@@ -15,7 +15,8 @@
 // a few useful typedefs
 typedef unsigned char  bool;    // define a bool type
 enum { FALSE = 0, TRUE = 1 };
-typedef char Str255[256];       // generic string type
+#define maxStrLength    256
+typedef char Str255[maxStrLength];       // generic string type
 
 #define maxOpcdLen  11          // max opcode length (for building opcode table)
 typedef char OpcdStr[maxOpcdLen+1];

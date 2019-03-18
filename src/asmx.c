@@ -1893,7 +1893,7 @@ OpcdPtr GetFindOpcode(char *opcode, int *typ, int *parm, MacroPtr *macro)
     }
 if (pass == 2 && !strcmp(opcode,"FROB"))
 {
-    printf("*** FROB typ=%d, parm=%d, macro=%.8X, p=%.8X\n",*typ,*parm,(int) macro,(int) p);
+    printf("*** FROB typ=%d, parm=%d, macro=%.8lX, p=%.8lX\n",*typ,*parm,(long) macro,(long) p);
 }
 
     return p;
@@ -5524,8 +5524,24 @@ int main(int argc, char * const argv[])
         exit(1);
     }
 
+    // variable for check if output files should be in a subdirectory
+    char *dir_find;
+    char path[maxStrLength], mkdir[maxStrLength];
+    int  dir_sep = '/';
+
     if (cl_List)
     {
+        dir_find = strrchr(cl_ListName, dir_sep);
+        if(dir_find != NULL){
+            strncpy(path, cl_ListName, (dir_find - cl_ListName));
+            strcpy(mkdir, "mkdir -p ");
+            strcat(mkdir, path);
+
+            if( system(mkdir) != 0 ){
+                fprintf(stderr,"Unable to create listing output directory './%s'!\n",path);
+                exit(1);
+            }
+        }
         listing = fopen(cl_ListName, "w");
         if (listing == NULL)
         {
