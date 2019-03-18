@@ -146,7 +146,7 @@ struct OpcdRec ARM_opcdTab[] =
 // --------------------------------------------------------------
 
 
-long ARMImmed(u_long val)
+long ARMImmed(unsigned long val)
 {
     // note: can't abort assembling instruction because it may cause phase errors
 
@@ -166,7 +166,7 @@ long ARMImmed(u_long val)
 }
 
 
-bool ARMShifter(u_long *shift)
+bool ARMShifter(unsigned long *shift)
 {
     int     reg1,reg2,typ;
     Str255  word;
@@ -273,7 +273,7 @@ int ARMWriteback(void)
 
 
 // addressing mode for LDR/STR/B/T/BT (post flag is TRUE for T opcode)
-bool ARMAddrMode2(u_long *mode, bool post)
+bool ARMAddrMode2(unsigned long *mode, bool post)
 {
     int     reg1,reg2;
     Str255  word;
@@ -460,7 +460,7 @@ bool ARMAddrMode2(u_long *mode, bool post)
 
 
 // addressing mode for LDRH/LDRSB/LDRSH/STRH
-bool ARMAddrMode3(u_long *mode)
+bool ARMAddrMode3(unsigned long *mode)
 {
     int     reg1,reg2;
     Str255  word;
@@ -570,7 +570,7 @@ bool ARMAddrMode3(u_long *mode)
 
 
 // addressing mode for LDC/STC
-bool ARMAddrMode5(u_long *mode)
+bool ARMAddrMode5(unsigned long *mode)
 {
     int     reg1;//,reg2;
     Str255  word;
@@ -662,7 +662,7 @@ bool ARMAddrMode5(u_long *mode)
 }
 
 
-void SetARMMultiReg(int reg, u_short *regbits, bool *warned)
+void SetARMMultiReg(int reg, unsigned short *regbits, bool *warned)
 {
     if (!*warned && *regbits & (1 << reg))
     {
@@ -673,7 +673,7 @@ void SetARMMultiReg(int reg, u_short *regbits, bool *warned)
 }
 
 
-int ARMGetMultiRegs(u_short *regbits)
+int ARMGetMultiRegs(unsigned short *regbits)
 {
     int     reg1,reg2,i;
     Str255  word;
@@ -895,8 +895,8 @@ int ARM_DoCPUOpcode(int typ, int parm)
     int     token;
     int     reg1,reg2,reg3,reg4;
     int     cond;
-    u_long  mode;
-    u_short regbits;
+    unsigned long  mode;
+    unsigned short regbits;
 
     // get condition from opcode wildcard
     word[0]=0;

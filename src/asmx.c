@@ -23,10 +23,10 @@ const int symTabCols = 3;       // number of columns for symbol table dump
 
 #if 0
 // these should already be defined in sys/types.h (included from stdio.h)
-typedef   unsigned char   u_char;
-typedef   unsigned short  u_short;
-typedef   unsigned int    u_int;
-typedef   unsigned long   u_long;
+typedef   unsigned char   unsigned char;
+typedef   unsigned short  unsigned short;
+typedef   unsigned int    unsigned int;
+typedef   unsigned long   unsigned long;
 #endif
 
 // --------------------------------------------------------------
@@ -36,7 +36,7 @@ const char      *progname;      // pointer to argv[0]
 struct SymRec
 {
     struct SymRec   *next;      // pointer to next symtab entry
-    u_long          value;      // symbol value
+    unsigned long   value;      // symbol value
     bool            defined;    // TRUE if defined
     bool            multiDef;   // TRUE if multiply defined
     bool            isSet;      // TRUE if defined with SET pseudo
@@ -76,8 +76,8 @@ struct SegRec
 {
     struct SegRec       *next;      // pointer to next segment
 //  bool                gen;        // FALSE to supress code output (not currently implemented)
-    u_long              loc;       // locptr for this segment
-    u_long              cod;       // codptr for this segment
+    unsigned long       loc;       // locptr for this segment
+    unsigned long       cod;       // codptr for this segment
     char                name[1];    // segment name, storage = 1 + length
 } *segTab = NULL;               // pointer to first entry in macro table
 typedef struct SegRec *SegPtr;
@@ -88,7 +88,7 @@ struct OpcdRec
 {
     OpcdStr         name;       // opcode name
     short           typ;        // opcode type
-    u_short         parm;       // opcode parameter
+    unsigned short         parm;       // opcode parameter
 };
 typedef struct OpcdRec *OpcdPtr;
 #endif
@@ -136,8 +136,8 @@ typedef struct CpuRec *CpuPtr;
 SegPtr          curSeg;             // current segment
 SegPtr          nullSeg;            // default null segment
 
-u_long          locPtr;             // Current program address
-u_long          codPtr;             // Current program "real" address
+unsigned long   locPtr;             // Current program address
+unsigned long   codPtr;             // Current program "real" address
 int             pass;               // Current assembler pass
 bool            warnFlag;           // TRUE if warning occurred this line
 bool            errFlag;            // TRUE if error occurred this line
@@ -168,10 +168,10 @@ enum {
 };
 
 int             instrLen;           // Current instruction length (negative to display as long DB)
-u_char          bytStr[MAX_BYTSTR]; // Current instruction / buffer for long DB statements
+unsigned char   bytStr[MAX_BYTSTR]; // Current instruction / buffer for long DB statements
 int             hexSpaces;          // flags for spaces in hex output for instructions
 bool            showAddr;           // TRUE to show LocPtr on listing
-u_long          xferAddr;           // Transfer address from END pseudo
+unsigned long   xferAddr;           // Transfer address from END pseudo
 bool            xferFound;          // TRUE if xfer addr defined w/ END
 
 //  Command line parameters
@@ -184,8 +184,8 @@ bool            cl_List;            // TRUE to generate listing file
 bool            cl_Obj;             // TRUE to generate object file
 bool            cl_ObjType;         // type of object file to generate:
 enum { OBJ_HEX, OBJ_S9, OBJ_BIN, OBJ_TRSDOS };  // values for cl_Obj
-u_long          cl_Binbase;         // base address for OBJ_BIN
-u_long          cl_Binend;          // end address for OBJ_BIN
+unsigned long   cl_Binbase;         // base address for OBJ_BIN
+unsigned long   cl_Binend;          // end address for OBJ_BIN
 int             cl_S9type;          // type of S9 file: 9, 19, 28, or 37
 bool            cl_Stdout;          // TRUE to send object file to stdout
 bool            cl_ListP1;          // TRUE to show listing in first assembler pass
@@ -692,9 +692,9 @@ int isalphanum(char c)
 }
 
 
-u_int EvalBin(char *binStr)
+unsigned int EvalBin(char *binStr)
 {
-    u_int   binVal;
+    unsigned int   binVal;
     int     evalErr;
     int     c;
 
@@ -719,9 +719,9 @@ u_int EvalBin(char *binStr)
 }
 
 
-u_int EvalOct(char *octStr)
+unsigned int EvalOct(char *octStr)
 {
-    u_int   octVal;
+    unsigned int   octVal;
     int     evalErr;
     int     c;
 
@@ -746,9 +746,9 @@ u_int EvalOct(char *octStr)
 }
 
 
-u_int EvalDec(char *decStr)
+unsigned int EvalDec(char *decStr)
 {
-    u_int   decVal;
+    unsigned int   decVal;
     int     evalErr;
     int     c;
 
@@ -773,7 +773,7 @@ u_int EvalDec(char *decStr)
 }
 
 
-int Hex2Dec(c)
+int Hex2Dec(int c)
 {
     c = toupper(c);
     if (c > '9')
@@ -782,9 +782,9 @@ int Hex2Dec(c)
 }
 
 
-u_int EvalHex(char *hexStr)
+unsigned int EvalHex(char *hexStr)
 {
-    u_int   hexVal;
+    unsigned int   hexVal;
     int     evalErr;
     int     c;
 
@@ -809,7 +809,7 @@ u_int EvalHex(char *hexStr)
 }
 
 
-u_int EvalNum(char *word)
+unsigned int EvalNum(char *word)
 {
     int val;
 
@@ -867,7 +867,7 @@ char * ListStr(char *l, char *s)
 }
 
 
-char * ListByte(char *p, u_char b)
+char * ListByte(char *p, unsigned char b)
 {
     char s[16]; // with extra space for just in case
 
@@ -876,7 +876,7 @@ char * ListByte(char *p, u_char b)
 }
 
 
-char * ListWord(char *p, u_short w)
+char * ListWord(char *p, unsigned short w)
 {
     char s[16]; // with extra space for just in case
 
@@ -885,7 +885,7 @@ char * ListWord(char *p, u_short w)
 }
 
 
-char * ListLong24(char *p, u_long l)
+char * ListLong24(char *p, unsigned long l)
 {
     char s[16]; // with extra space for just in case
 
@@ -894,7 +894,7 @@ char * ListLong24(char *p, u_long l)
 }
 
 
-char * ListLong(char *p, u_long l)
+char * ListLong(char *p, unsigned long l)
 {
     char s[16]; // with extra space for just in case
 
@@ -903,7 +903,7 @@ char * ListLong(char *p, u_long l)
 }
 
 
-char * ListAddr(char *p,u_long addr)
+char * ListAddr(char *p,unsigned long addr)
 {
     switch(addrWid)
     {
@@ -924,7 +924,7 @@ char * ListAddr(char *p,u_long addr)
     return p;
 }
 
-char * ListLoc(u_long addr)
+char * ListLoc(unsigned long addr)
 {
     char *p;
 
@@ -939,7 +939,7 @@ char * ListLoc(u_long addr)
 // --------------------------------------------------------------
 // ZSCII conversion routines
 
-    u_char  zStr[MAX_BYTSTR];   // output data buffer
+    unsigned char  zStr[MAX_BYTSTR];   // output data buffer
     int     zLen;               // length of output data
     int     zOfs,zPos;          // current output offset (in bytes) and bit position
     int     zShift;             // current shift lock status (0, 1, 2)
@@ -1112,7 +1112,7 @@ void ConvertZSCII(void)
 // converts the word to uppercase, too
 int GetWord(char *word)
 {
-    u_char  c;
+    unsigned char  c;
 
     word[0] = 0;
 
@@ -1174,7 +1174,7 @@ int GetWord(char *word)
 // same as GetWord, except it allows '.' chars in alphanumerics and ":=" as a token
 int GetOpcode(char *word)
 {
-    u_char  c;
+    unsigned char  c;
 
     word[0] = 0;
 
@@ -1229,7 +1229,7 @@ void GetFName(char *word)
 {
     char            *oldLine;
     int             ch;
-    u_char          quote;
+    unsigned char          quote;
 
     // skip leading whitespace
     while (*linePtr == ' ' || *linePtr == '\t')
@@ -1411,9 +1411,9 @@ int CheckReg(int reg) // may want to add a maxreg parameter
 }
 
 
-u_int GetBackslashChar(void)
+unsigned int GetBackslashChar(void)
 {
-    u_char      ch;
+    unsigned char      ch;
     Str255      s;
 
     if (*linePtr)
@@ -2011,7 +2011,7 @@ int RefSym(char *symName, bool *known)
  *  DefSym
  */
 
-void DefSym(char *symName, u_long val, bool setSym, bool equSym)
+void DefSym(char *symName, unsigned long val, bool setSym, bool equSym)
 {
     SymPtr p;
     Str255 s;
@@ -2638,12 +2638,12 @@ enum
     REC_CMNT = 3    // comment record
 #endif // CODE_COMMENTS
 };
-    u_char  hex_buf[IHEX_SIZE]; // buffer for current line of object data
-    u_long  hex_len;            // current size of object data buffer
-    u_long  hex_base;           // address of start of object data buffer
-    u_long  hex_addr;           // address of next byte in object data buffer
-    u_short hex_page;           // high word of address for intel hex file
-    u_long  bin_eof;            // current end of file when writing binary file
+    unsigned char  hex_buf[IHEX_SIZE]; // buffer for current line of object data
+    unsigned long  hex_len;            // current size of object data buffer
+    unsigned long  hex_base;           // address of start of object data buffer
+    unsigned long  hex_addr;           // address of next byte in object data buffer
+    unsigned short hex_page;           // high word of address for intel hex file
+    unsigned long  bin_eof;            // current end of file when writing binary file
 
 // Intel hex format:
 //
@@ -2666,7 +2666,7 @@ enum
 // ee    = checksum byte: add all bytes aa through dd
 //                        and subtract from 256 (2's complement negate)
 
-void write_ihex(u_long addr, u_char *buf, u_long len, int rectype)
+void write_ihex(unsigned long addr, unsigned char *buf, unsigned long len, int rectype)
 {
     int i,chksum;
 
@@ -2722,7 +2722,7 @@ void write_ihex(u_long addr, u_char *buf, u_long len, int rectype)
 // ee    = checksum byte: add all bytes bb through dd
 //                        and subtract from 255 (1's complement)
 
-void write_srec(u_long addr, u_char *buf, u_long len, int rectype)
+void write_srec(unsigned long addr, unsigned char *buf, unsigned long len, int rectype)
 {
     int i,chksum;
 
@@ -2765,9 +2765,9 @@ void write_srec(u_long addr, u_char *buf, u_long len, int rectype)
 }
 
 
-void write_bin(u_long addr, u_char *buf, u_long len, int rectype)
+void write_bin(unsigned long addr, unsigned char *buf, unsigned long len, int rectype)
 {
-    u_long i;
+    unsigned long i;
 
     if (rectype == REC_DATA)
     {
@@ -2810,9 +2810,9 @@ void write_bin(u_long addr, u_char *buf, u_long len, int rectype)
 }
 
 
-u_char trs_buf[256]; // buffer for current object code data, used instead of hex_buf
+unsigned char trs_buf[256]; // buffer for current object code data, used instead of hex_buf
 
-void write_trsdos(u_long addr, u_char *buf, u_long len, int rectype)
+void write_trsdos(unsigned long addr, unsigned char *buf, unsigned long len, int rectype)
 {
     switch(rectype)
     {
@@ -2884,7 +2884,7 @@ void write_trsdos(u_long addr, u_char *buf, u_long len, int rectype)
 
 
 // rectype 0 = code, rectype 1 = xfer
-void write_hex(u_long addr, u_char *buf, u_long len, int rectype)
+void write_hex(unsigned long addr, unsigned char *buf, unsigned long len, int rectype)
 {
     if (cl_Obj || cl_Stdout)
     {
@@ -2959,7 +2959,7 @@ void CodeHeader(char *s)
 {
     CodeFlush();
 
-    write_hex(0, (u_char *) s, strlen(s), REC_HEDR);
+    write_hex(0, (unsigned char *) s, strlen(s), REC_HEDR);
 }
 
 
@@ -2968,7 +2968,7 @@ void CodeComment(char *s)
 {
     CodeFlush();
 
-    write_hex(0, (u_char *) s, strlen(s), REC_CMNT);
+    write_hex(0, (unsigned char *) s, strlen(s), REC_CMNT);
 }
 #endif // CODE_COMMENTS
 
@@ -3024,7 +3024,7 @@ void InstrClear(void)
 
 
 // add a byte to the instruction
-void InstrAddB(u_char b)
+void InstrAddB(unsigned char b)
 {
     bytStr[instrLen++] = b;
     hexSpaces |= 1<<instrLen;
@@ -3034,7 +3034,7 @@ void InstrAddB(u_char b)
 // add a byte/word opcode to the instruction
 // a big-endian word is added if the opcode is > 255
 // this is for opcodes with pre-bytes
-void InstrAddX(u_long op)
+void InstrAddX(unsigned long op)
 {
 //  if ((op & 0xFFFFFF00) == 0) hexSpaces |= 1; // to indent single-byte instructions
 //  if (op & 0xFF000000) bytStr[instrLen++] = op >> 24;
@@ -3046,7 +3046,7 @@ void InstrAddX(u_long op)
 
 
 // add a word to the instruction in the CPU's endianness
-void InstrAddW(u_short w)
+void InstrAddW(unsigned short w)
 {
     if (endian == LITTLE_END)
     {
@@ -3064,7 +3064,7 @@ void InstrAddW(u_short w)
 
 
 // add a 3-byte word to the instruction in the CPU's endianness
-void InstrAdd3(u_long l)
+void InstrAdd3(unsigned long l)
 {
     if (endian == LITTLE_END)
     {
@@ -3084,7 +3084,7 @@ void InstrAdd3(u_long l)
 
 
 // add a longword to the instruction in the CPU's endianness
-void InstrAddL(u_long l)
+void InstrAddL(unsigned long l)
 {
     if (endian == LITTLE_END)
     {
@@ -3105,14 +3105,14 @@ void InstrAddL(u_long l)
 }
 
 
-void InstrB(u_char b1)
+void InstrB(unsigned char b1)
 {
     InstrClear();
     InstrAddB(b1);
 }
 
 
-void InstrBB(u_char b1, u_char b2)
+void InstrBB(unsigned char b1, unsigned char b2)
 {
     InstrClear();
     InstrAddB(b1);
@@ -3120,7 +3120,7 @@ void InstrBB(u_char b1, u_char b2)
 }
 
 
-void InstrBBB(u_char b1, u_char b2, u_char b3)
+void InstrBBB(unsigned char b1, unsigned char b2, unsigned char b3)
 {
     InstrClear();
     InstrAddB(b1);
@@ -3129,7 +3129,7 @@ void InstrBBB(u_char b1, u_char b2, u_char b3)
 }
 
 
-void InstrBBBB(u_char b1, u_char b2, u_char b3, u_char b4)
+void InstrBBBB(unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4)
 {
     InstrClear();
     InstrAddB(b1);
@@ -3139,7 +3139,7 @@ void InstrBBBB(u_char b1, u_char b2, u_char b3, u_char b4)
 }
 
 
-void InstrBBBBB(u_char b1, u_char b2, u_char b3, u_char b4, u_char b5)
+void InstrBBBBB(unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4, unsigned char b5)
 {
     InstrClear();
     InstrAddB(b1);
@@ -3150,7 +3150,7 @@ void InstrBBBBB(u_char b1, u_char b2, u_char b3, u_char b4, u_char b5)
 }
 
 
-void InstrBW(u_char b1, u_short w1)
+void InstrBW(unsigned char b1, unsigned short w1)
 {
     InstrClear();
     InstrAddB(b1);
@@ -3158,7 +3158,7 @@ void InstrBW(u_char b1, u_short w1)
 }
 
 
-void InstrBBW(u_char b1, u_char b2, u_short w1)
+void InstrBBW(unsigned char b1, unsigned char b2, unsigned short w1)
 {
     InstrClear();
     InstrAddB(b1);
@@ -3167,7 +3167,7 @@ void InstrBBW(u_char b1, u_char b2, u_short w1)
 }
 
 
-void InstrBBBW(u_char b1, u_char b2, u_char b3, u_short w1)
+void InstrBBBW(unsigned char b1, unsigned char b2, unsigned char b3, unsigned short w1)
 {
     InstrClear();
     InstrAddB(b1);
@@ -3177,14 +3177,14 @@ void InstrBBBW(u_char b1, u_char b2, u_char b3, u_short w1)
 }
 
 
-void InstrX(u_long op)
+void InstrX(unsigned long op)
 {
     InstrClear();
     InstrAddX(op);
 }
 
 
-void InstrXB(u_long op, u_char b1)
+void InstrXB(unsigned long op, unsigned char b1)
 {
     InstrClear();
     InstrAddX(op);
@@ -3192,7 +3192,7 @@ void InstrXB(u_long op, u_char b1)
 }
 
 
-void InstrXBB(u_long op, u_char b1, u_char b2)
+void InstrXBB(unsigned long op, unsigned char b1, unsigned char b2)
 {
     InstrClear();
     InstrAddX(op);
@@ -3201,7 +3201,7 @@ void InstrXBB(u_long op, u_char b1, u_char b2)
 }
 
 
-void InstrXBBB(u_long op, u_char b1, u_char b2, u_char b3)
+void InstrXBBB(unsigned long op, unsigned char b1, unsigned char b2, unsigned char b3)
 {
     InstrClear();
     InstrAddX(op);
@@ -3211,7 +3211,7 @@ void InstrXBBB(u_long op, u_char b1, u_char b2, u_char b3)
 }
 
 
-void InstrXBBBB(u_long op, u_char b1, u_char b2, u_char b3, u_char b4)
+void InstrXBBBB(unsigned long op, unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4)
 {
     InstrClear();
     InstrAddX(op);
@@ -3222,7 +3222,7 @@ void InstrXBBBB(u_long op, u_char b1, u_char b2, u_char b3, u_char b4)
 }
 
 
-void InstrXW(u_long op, u_short w1)
+void InstrXW(unsigned long op, unsigned short w1)
 {
     InstrClear();
     InstrAddX(op);
@@ -3230,7 +3230,7 @@ void InstrXW(u_long op, u_short w1)
 }
 
 
-void InstrXBW(u_long op, u_char b1, u_short w1)
+void InstrXBW(unsigned long op, unsigned char b1, unsigned short w1)
 {
     InstrClear();
     InstrAddX(op);
@@ -3239,7 +3239,7 @@ void InstrXBW(u_long op, u_char b1, u_short w1)
 }
 
 
-void InstrXBWB(u_long op, u_char b1, u_short w1, u_char b2)
+void InstrXBWB(unsigned long op, unsigned char b1, unsigned short w1, unsigned char b2)
 {
     InstrClear();
     InstrAddX(op);
@@ -3249,7 +3249,7 @@ void InstrXBWB(u_long op, u_char b1, u_short w1, u_char b2)
 }
 
 
-void InstrXWW(u_long op, u_short w1, u_short w2)
+void InstrXWW(unsigned long op, unsigned short w1, unsigned short w2)
 {
     InstrClear();
     InstrAddX(op);
@@ -3258,7 +3258,7 @@ void InstrXWW(u_long op, u_short w1, u_short w2)
 }
 
 
-void InstrX3(u_long op, u_long l1)
+void InstrX3(unsigned long op, unsigned long l1)
 {
     InstrClear();
     InstrAddX(op);
@@ -3266,20 +3266,20 @@ void InstrX3(u_long op, u_long l1)
 }
 
 
-void InstrW(u_short w1)
+void InstrW(unsigned short w1)
 {
     InstrClear();
     InstrAddW(w1);
 }
 
-void InstrWW(u_short w1, u_short w2)
+void InstrWW(unsigned short w1, unsigned short w2)
 {
     InstrClear();
     InstrAddW(w1);
     InstrAddW(w2);
 }
 
-void InstrWL(u_short w1, u_long l1)
+void InstrWL(unsigned short w1, unsigned long l1)
 {
     InstrClear();
     InstrAddW(w1);
@@ -3287,14 +3287,14 @@ void InstrWL(u_short w1, u_long l1)
 }
 
 
-void InstrL(u_long l1)
+void InstrL(unsigned long l1)
 {
     InstrClear();
     InstrAddL(l1);
 }
 
 
-void InstrLL(u_long l1, u_long l2)
+void InstrLL(unsigned long l1, unsigned long l2)
 {
     InstrClear();
     InstrAddL(l1);
@@ -3536,7 +3536,7 @@ void DoOpcode(int typ, int parm)
     char            *oldLine;
     int             token;
     int             ch;
-    u_char          quote;
+    unsigned char          quote;
     char            *p;
 
     if (DoCPUOpcode(typ, parm)) return;
