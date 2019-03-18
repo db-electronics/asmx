@@ -1,0 +1,293 @@
+                        ; 6805.asm
+
+      = 0044            dir	EQU	'D'
+      = 0049            imm	EQU	'I'
+      = 0058            ix1	EQU	'X'
+      = 5832            ix2	EQU	'X2'
+      = 4558            ext	EQU	'EX'
+
+0000  00 44 FE          	BRSET	0 dir .	; 00 44 FE
+0003  01 44 FE          	BRCLR	0 dir .	; 01 44 FE
+0006  02 44 FE          	BRSET	1 dir .	; 02 44 FE
+0009  03 44 FE          	BRCLR	1 dir .	; 03 44 FE
+000C  04 44 FE          	BRSET	2 dir .	; 04 44 FE
+000F  05 44 FE          	BRCLR	2 dir .	; 05 44 FE
+0012  06 44 FE          	BRSET	3 dir .	; 06 44 FE
+0015  07 44 FE          	BRCLR	3 dir .	; 07 44 FE
+0018  08 44 FE          	BRSET	4 dir .	; 08 44 FE
+001B  09 44 FE          	BRCLR	4 dir .	; 09 44 FE
+001E  0A 44 FE          	BRSET	5 dir .	; 0A 44 FE
+0021  0B 44 FE          	BRCLR	5 dir .	; 0B 44 FE
+0024  0C 44 FE          	BRSET	6 dir .	; 0C 44 FE
+0027  0D 44 FE          	BRCLR	6 dir .	; 0D 44 FE
+002A  0E 44 FE          	BRSET	7 dir .	; 0E 44 FE
+002D  0F 44 FE          	BRCLR	7 dir .	; 0F 44 FE
+
+0030  10 44             	BSET	0 dir	; 10 44
+0032  11 44             	BCLR	0 dir	; 11 44
+0034  12 44             	BSET	1 dir	; 12 44
+0036  13 44             	BCLR	1 dir	; 13 44
+0038  14 44             	BSET	2 dir	; 14 44
+003A  15 44             	BCLR	2 dir	; 15 44
+003C  16 44             	BSET	3 dir	; 16 44
+003E  17 44             	BCLR	3 dir	; 17 44
+0040  18 44             	BSET	4 dir	; 18 44
+0042  19 44             	BCLR	4 dir	; 19 44
+0044  1A 44             	BSET	5 dir	; 1A 44
+0046  1B 44             	BCLR	5 dir	; 1B 44
+0048  1C 44             	BSET	6 dir	; 1C 44
+004A  1D 44             	BCLR	6 dir	; 1D 44
+004C  1E 44             	BSET	7 dir	; 1E 44
+004E  1F 44             	BCLR	7 dir	; 1F 44
+
+0050  20 FE             	BRA	.	; 20 FE
+0052  21 FE             	BRN	.	; 21 FE
+0054  22 FE             	BHI	.	; 22 FE
+0056  23 FE             	BLS	.	; 23 FE
+0058  24 FE             	BCC	.	; 24 FE
+005A  25 FE             	BCS	.	; 25 FE
+005C  24 FE             	BHS	.	; 24 FE
+005E  25 FE             	BLO	.	; 25 FE
+0060  26 FE             	BNE	.	; 26 FE
+0062  27 FE             	BEQ	.	; 27 FE
+0064  28 FE             	BHCC	.	; 28 FE
+0066  29 FE             	BHCS	.	; 29 FE
+0068  2A FE             	BPL	.	; 2A FE
+006A  2B FE             	BMI	.	; 2B FE
+006C  2C FE             	BMC	.	; 2C FE
+006E  2D FE             	BMS	.	; 2D FE
+0070  2E FE             	BIL	.	; 2E FE
+0072  2F FE             	BIH	.	; 2F FE
+
+0074  30 44             	NEG	dir	; 30 44
+0076  31                	FCB	$31	; 31 44
+0077  32                	FCB	$32	; 32 44
+0078  33 44             	COM	dir	; 33 44
+007A  34 44             	LSR	dir	; 34 44
+007C  35                	FCB	$35	; 35
+007D  36 44             	ROR	dir	; 36 44
+007F  37 44             	ASR	dir	; 37 44
+0081  38 44             	ASL	dir	; 38 44
+0083  38 44             	LSL	dir	; 38 44
+0085  39 44             	ROL	dir	; 39 44
+0087  3A 44             	DEC	dir	; 3A 44
+0089  3B                	FCB	$3B	; 3B 44
+008A  3C 44             	INC	dir	; 3C 44
+008C  3D 44             	TST	dir	; 3D 44
+008E  3E                	FCB	$3E	; 3E 44
+008F  3F 44             	CLR	dir	; 3F 44
+
+0091  40                	NEGA		; 40
+0092  41                	FCB	$41	; 41
+0093  42                	MUL		; 42
+0094  43                	COMA		; 43
+0095  44                	LSRA		; 44
+0096  45                	FCB	$45	; 45
+0097  46                	RORA		; 46
+0098  47                	ASRA		; 47
+0099  48                	ASLA		; 48
+009A  48                	LSLA		; 48
+009B  49                	ROLA		; 49
+009C  4A                	DECA		; 4A
+009D  4B                	FCB	$4B	; 4B
+009E  4C                	INCA		; 4C
+009F  4D                	TSTA		; 4D
+00A0  4E                	FCB	$4E	; 4E
+00A1  4F                	CLRA		; 4F
+
+00A2  50                	NEGX		; 50
+00A3  51                	FCB	$51	; 51
+00A4  52                	FCB	$52	; 52
+00A5  53                	COMX		; 53
+00A6  54                	LSRX		; 54
+00A7  55                	FCB	$55	; 55
+00A8  56                	RORX		; 56
+00A9  57                	ASRX		; 57
+00AA  58                	ASLX		; 58
+00AB  58                	LSLX		; 58
+00AC  59                	ROLX		; 59
+00AD  5A                	DECX		; 5A
+00AE  5B                	FCB	$5B	; 5B
+00AF  5C                	INCX		; 5C
+00B0  5D                	TSTX		; 5D
+00B1  5E                	FCB	$5E	; 5E
+00B2  5F                	CLRX		; 5F
+
+00B3  60 58             	NEG	ix1,X	; 60 58
+00B5  61                	FCB	$61	; 61
+00B6  62                	FCB	$62	; 62
+00B7  63 58             	COM	ix1,X	; 63 58
+00B9  64 58             	LSR	ix1,X	; 64 58
+00BB  65                	FCB	$65	; 65
+00BC  66 58             	ROR	ix1,X	; 66 58
+00BE  67 58             	ASR	ix1,X	; 67 58
+00C0  68 58             	ASL	ix1,X	; 68 58
+00C2  68 58             	LSL	ix1,X	; 68 58
+00C4  69 58             	ROL	ix1,X	; 69 58
+00C6  6A 58             	DEC	ix1,X	; 6A 58
+00C8  6B                	FCB	$6B	; 6B
+00C9  6C 58             	INC	ix1,X	; 6C 58
+00CB  6D 58             	TST	ix1,X	; 6D 58
+00CD  6E                	FCB	$6E	; 6E
+00CE  6F 58             	CLR	ix1,X	; 6F 58
+
+00D0  70                	NEG	,X	; 70
+00D1  71                	FCB	$71	; 71
+00D2  72                	FCB	$72	; 72
+00D3  73                	COM	,X	; 73
+00D4  74                	LSR	,X	; 74
+00D5  75                	FCB	$75	; 75
+00D6  76                	ROR	,X	; 76
+00D7  77                	ASR	,X	; 77
+00D8  78                	ASL	,X	; 78
+00D9  78                	LSL	,X	; 78
+00DA  79                	ROL	,X	; 79
+00DB  7A                	DEC	,X	; 7A
+00DC  7B                	FCB	$7B	; 7B
+00DD  7C                	INC	,X	; 7C
+00DE  7D                	TST	,X	; 7D
+00DF  7E                	FCB	$7E	; 7E
+00E0  7F                	CLR	,X	; 7F
+
+00E1  80                	RTI		; 80
+00E2  81                	RTS		; 81
+00E3  82                	FCB	$82	; 82
+00E4  83                	SWI		; 83
+00E5  84                	FCB	$84	; 84
+00E6  85                	FCB	$85	; 85
+00E7  86                	FCB	$86	; 86
+00E8  87                	FCB	$87	; 87
+00E9  88                	FCB	$88	; 88
+00EA  89                	FCB	$89	; 89
+00EB  8A                	FCB	$8A	; 8A
+00EC  8B                	FCB	$8B	; 8B
+00ED  8C                	FCB	$8C	; 8C
+00EE  8D                	FCB	$8D	; 8D
+00EF  8E                	STOP		; 8E
+00F0  8F                	WAIT		; 8F
+
+00F1  90                	FCB	$90	; 90
+00F2  91                	FCB	$91	; 91
+00F3  92                	FCB	$92	; 92
+00F4  93                	FCB	$93	; 93
+00F5  94                	FCB	$94	; 94
+00F6  95                	FCB	$95	; 95
+00F7  96                	FCB	$96	; 96
+00F8  97                	TAX		; 97
+00F9  98                	CLC		; 98
+00FA  99                	SEC		; 99
+00FB  9A                	CLI		; 9A
+00FC  9B                	SEI		; 9B
+00FD  9C                	RSP		; 9C (reset stack pointer)
+00FE  9D                	NOP		; 9D
+00FF  9E                	FCB	$9E	; 9E
+0100  9F                	TXA		; 9F
+
+0101  A0 49             	SUB	#imm	; A0 49
+0103  A1 49             	CMP	#imm	; A1 49
+0105  A2 49             	SBC	#imm	; A2 49
+0107  A3 49             	CPX	#imm	; A3 49
+0109  A4 49             	AND	#imm	; A4 49
+010B  A5 49             	BIT	#imm	; A5 49
+010D  A6 49             	LDA	#imm	; A6 49
+010F  A7                	FCB	$A7	; A7    (STA #imm)
+0110  A8 49             	EOR	#imm	; A8 49
+0112  A9 49             	ADC	#imm	; A9 49
+0114  AA 49             	ORA	#imm	; AA 49
+0116  AB 49             	ADD	#imm	; AB 49
+0118  AC                	FCB	$AC	; AC    (JMP #imm)
+0119  AD FE             	BSR	.	; AD FE
+011B  AE 49             	LDX	#imm	; AE 49
+011D  AF                	FCB	$AF	; AF    (STX #imm)
+
+011E  B0 44             	SUB	dir	; B0 44
+0120  B1 44             	CMP	dir	; B1 44
+0122  B2 44             	SBC	dir	; B2 44
+0124  B3 44             	CPX	dir	; B3 44
+0126  B4 44             	AND	dir	; B4 44
+0128  B5 44             	BIT	dir	; B5 44
+012A  B6 44             	LDA	dir	; B6 44
+012C  B7 44             	STA	dir	; B7 44
+012E  B8 44             	EOR	dir	; B8 44
+0130  B9 44             	ADC	dir	; B9 44
+0132  BA 44             	ORA	dir	; BA 44
+0134  BB 44             	ADD	dir	; BB 44
+0136  BC 44             	JMP	dir	; BC 44
+0138  BD 44             	JSR	dir	; BD 44
+013A  BE 44             	LDX	dir	; BE 44
+013C  BF 44             	STX	dir	; BF 44
+
+013E  C0 4558           	SUB	ext	; C0 4558
+0141  C1 4558           	CMP	ext	; C1 4558
+0144  C2 4558           	SBC	ext	; C2 4558
+0147  C3 4558           	CPX	ext	; C3 4558
+014A  C4 4558           	AND	ext	; C4 4558
+014D  C5 4558           	BIT	ext	; C5 4558
+0150  C6 4558           	LDA	ext	; C6 4558
+0153  C7 4558           	STA	ext	; C7 4558
+0156  C8 4558           	EOR	ext	; C8 4558
+0159  C9 4558           	ADC	ext	; C9 4558
+015C  CA 4558           	ORA	ext	; CA 4558
+015F  CB 4558           	ADD	ext	; CB 4558
+0162  CC 4558           	JMP	ext	; CC 4558
+0165  CD 4558           	JSR	ext	; CD 4558
+0168  CE 4558           	LDX	ext	; CE 4558
+016B  CF 4558           	STX	ext	; CF 4558
+
+016E  D0 5832           	SUB	ix2,X	; D0 5832
+0171  D1 5832           	CMP	ix2,X	; D1 5832
+0174  D2 5832           	SBC	ix2,X	; D2 5832
+0177  D3 5832           	CPX	ix2,X	; D3 5832
+017A  D4 5832           	AND	ix2,X	; D4 5832
+017D  D5 5832           	BIT	ix2,X	; D5 5832
+0180  D6 5832           	LDA	ix2,X	; D6 5832
+0183  D7 5832           	STA	ix2,X	; D7 5832
+0186  D8 5832           	EOR	ix2,X	; D8 5832
+0189  D9 5832           	ADC	ix2,X	; D9 5832
+018C  DA 5832           	ORA	ix2,X	; DA 5832
+018F  DB 5832           	ADD	ix2,X	; DB 5832
+0192  DC 5832           	JMP	ix2,X	; DC 5832
+0195  DD 5832           	JSR	ix2,X	; DD 5832
+0198  DE 5832           	LDX	ix2,X	; DE 5832
+019B  DF 5832           	STX	ix2,X	; DF 5832
+
+019E  E0 58             	SUB	ix1,X	; E0 58
+01A0  E1 58             	CMP	ix1,X	; E1 58
+01A2  E2 58             	SBC	ix1,X	; E2 58
+01A4  E3 58             	CPX	ix1,X	; E3 58
+01A6  E4 58             	AND	ix1,X	; E4 58
+01A8  E5 58             	BIT	ix1,X	; E5 58
+01AA  E6 58             	LDA	ix1,X	; E6 58
+01AC  E7 58             	STA	ix1,X	; E7 58
+01AE  E8 58             	EOR	ix1,X	; E8 58
+01B0  E9 58             	ADC	ix1,X	; E9 58
+01B2  EA 58             	ORA	ix1,X	; EA 58
+01B4  EB 58             	ADD	ix1,X	; EB 58
+01B6  EC 58             	JMP	ix1,X	; EC 58
+01B8  ED 58             	JSR	ix1,X	; ED 58
+01BA  EE 58             	LDX	ix1,X	; EE 58
+01BC  EF 58             	STX	ix1,X	; EF 58
+
+01BE  F0                	SUB	,X	; F0
+01BF  F1                	CMP	,X	; F1
+01C0  F2                	SBC	,X	; F2
+01C1  F3                	CPX	,X	; F3
+01C2  F4                	AND	,X	; F4
+01C3  F5                	BIT	,X	; F5
+01C4  F6                	LDA	,X	; F6
+01C5  F7                	STA	,X	; F7
+01C6  F8                	EOR	,X	; F8
+01C7  F9                	ADC	,X	; F9
+01C8  FA                	ORA	,X	; FA
+01C9  FB                	ADD	,X	; FB
+01CA  FC                	JMP	,X	; FC
+01CB  FD                	JSR	,X	; FD
+01CC  FE                	LDX	,X	; FE
+01CD  FF                	STX	,X	; FF
+
+01CE                    	END
+
+00000 Total Error(s)
+
+DIR                0044 E  EXT                4558 E  IMM                0049 E
+IX1                0058 E  IX2                5832 E

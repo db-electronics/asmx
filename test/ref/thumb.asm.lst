@@ -1,0 +1,137 @@
+000000                  	CPU	THUMB_BE
+
+000000 4151             	ADC	R1,R2	; 4151
+
+000002 1CD1             	ADD	R1,R2,#3 ; 1CD1
+000004 3149             	ADD	R1,#'I'	; 3149
+000006 18D1             	ADD	R1,R2,R3 ; 18D1
+000008 4411             	ADD	R1,R2	; 4411
+00000A 4451             	ADD	R1,R10	; 4451
+00000C 4491             	ADD	R9,R2	; 4491
+00000E 44D1             	ADD	R9,R10	; 44D1
+000010 A101             	ADD	R1,PC,#4 ; A101
+000012 A901             	ADD	R1,SP,#4 ; A901
+000014 D001             	ADD	SP,#4	; D001
+
+000016 4011             	AND	R1,R2	; 4011
+
+000018 0151             	ASL	R1,R2,#5 ; 0151
+00001A 4091             	ASL	R1,R2	; 4091
+
+00001C 1151             	ASR	R1,R2,#5 ; 1151
+00001E 4111             	ASR	R1,R2	; 4111
+
+000020 DEFE             	B	.	; DEFE
+000022 E7FF             	B	B	; E7FF
+000024                  B
+
+000024 D0FE             	BEQ	.	; D0FE
+000026 D1FE             	BNE	.	; D1FE
+000028 D2FE             	BCS	.	; D2FE
+00002A D2FE             	BHS	.	; D2FE
+00002C D3FE             	BCC	.	; D3FE
+00002E D3FE             	BLO	.	; D3FE
+000030 D4FE             	BMI	.	; D4FE
+000032 D5FE             	BPL	.	; D5FE
+000034 D6FE             	BVS	.	; D6FE
+000036 D7FE             	BVC	.	; D7FE
+000038 D8FE             	BHI	.	; D8FE
+00003A D9FE             	BLS	.	; D9FE
+00003C DAFE             	BGE	.	; DAFE
+00003E DBFE             	BLT	.	; DBFE
+000040 DCFE             	BGT	.	; DCFE
+000042 DDFE             	BLE	.	; DDFE
+000044 DEFE             	BAL	.	; DEFE
+
+000046 4391             	BIC	R1,R2	; 4391
+
+000048 BE49             	BKPT	'I'	; BE49
+
+00004A F7FF FFFE        	BL	.	; F7FF FFFE
+
+00004E F7FF EFFE        	BLX	.	; F7FF EFFE
+000052 4790             	BLX	R9	; 47C8
+
+000054 4770             	BX	LR	; 4770
+
+000056 42D1             	CMN	R1,R2	; 42D1
+
+000058 2949             	CMP	R1,#'I'	; 2949
+00005A 4291             	CMP	R1,R2	; 4291
+00005C 4551             	CMP	R1,R10	; 4551
+00005E 4591             	CMP	R9,R2	; 4591
+000060 45D1             	CMP	R9,R10	; 45D1
+
+000062 4051             	EOR	R1,R2	; 4051
+
+000064 CBFF             	LDMIA	r3!,{r0-r7} ; CBFF
+
+000066 6851             	LDR	R1,[R2,#4] ; 6851
+000068 58D1             	LDR	R1,[R2,R3] ; 58D1
+00006A 4901             	LDR	R1,[PC,#4] ; 4901
+00006C 9901             	LDR	R1,[SP,#4] ; 9901
+
+00006E 7851             	LDRB	R1,[R2,#1] ; 7851
+000070 5CD1             	LDRB	R1,[R2,R3] ; 5CD1
+
+000072 8851             	LDRH	R1,[R2,#2] ; 8851
+000074 5AD1             	LDRH	R1,[R2,R3] ; 5AD1
+
+000076 56D1             	LDRSB	R1,[R2,R3] ; 56D1
+
+000078 5ED1             	LDRSH	R1,[R2,R3] ; 5ED1
+
+00007A 0151             	LSL	R1,R2,#5 ; 0151
+00007C 4091             	LSL	R1,R2	; 4091
+
+00007E 0951             	LSR	R1,R2,#5 ; 0951
+000080 40D1             	LSR	R1,R2	; 40D1
+
+000082 2149             	MOV	R1,#'I'	; 2149
+000084 1C11             	MOV	R1,R2	; 1C11
+000086 4651             	MOV	R1,R10	; 4651
+000088 4691             	MOV	R9,R2	; 4691
+00008A 46D1             	MOV	R9,R10	; 46D1
+
+00008C 4351             	MUL	R1,R2	; 4351
+
+00008E 43D1             	MVN	R1,R2	; 43D1
+
+000090 4251             	NEG	R1,R2	; 4251
+
+000092 46C0             	NOP		; 46C0 (MOV R8,R8)
+
+000094 4311             	ORR	R1,R2	; 4311
+
+000096 B53E             	POP	{r1,r2,r3-r5,lr} ; B53E
+
+000098 BDFF             	PUSH	{r0-lr}	; BDFF
+
+00009A 41D1             	ROR	R1,R2	; 41D1
+
+00009C 4191             	SBC	R1,R2	; 4191
+
+00009E C3FF             	STMIA	r3!,{r0-r7} ; C3FF
+
+0000A0 6051             	STR	R1,[R2,#4] ; 6051
+0000A2 50D1             	STR	R1,[R2,R3] ; 50D1
+0000A4 9101             	STR	R1,[SP,#4] ; 9101
+
+0000A6 7051             	STRB	R1,[R2,#1] ; 7051
+0000A8 54D1             	STRB	R1,[R2,R3] ; 54D1
+
+0000AA 8051             	STRH	R1,[R2,#2] ; 8051
+0000AC 52D1             	STRH	R1,[R2,R3] ; 52D1
+
+0000AE 1ED1             	SUB	R1,R2,#3 ; 1ED1
+0000B0 3949             	SUB	R1,#'I'	; 3949
+0000B2 1AD1             	SUB	R1,R2,R3 ; 1AD1
+0000B4 B081             	SUB	SP,#4	; B081
+
+0000B6 DF49             	SWI	'I'	; DF49
+
+0000B8 4211             	TST	R1,R2	; 4211
+
+00000 Total Error(s)
+
+B                  00000024

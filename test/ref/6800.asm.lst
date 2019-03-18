@@ -1,0 +1,276 @@
+0000                    	PROCESSOR 6800
+
+0000  00                	FCB	$00
+0001  01                	NOP
+0002  02                	FCB	$02
+0003  03                	FCB	$03
+0004  04                	FCB	$04
+0005  05                	FCB	$05
+0006  06                	TAP
+0007  07                	TPA
+0008  08                	INX
+0009  09                	DEX
+000A  0A                	CLV
+000B  0B                	SEV
+000C  0C                	CLC
+000D  0D                	SEC
+000E  0E                	CLI
+000F  0F                	SEI
+
+0010  10                	SBA
+0011  11                	CBA
+0012  12                	FCB	$12
+0013  13                	FCB	$13
+0014  14                	FCB	$14
+0015  15                	FCB	$15
+0016  16                	TAB
+0017  17                	TBA
+0018  18                	FCB	$18
+0019  19                	DAA
+001A  1A                	FCB	$1A
+001B  1B                	ABA
+001C  1C                	FCB	$1C
+001D  1D                	FCB	$1D
+001E  1E                	FCB	$1E
+001F  1F                	FCB	$1F
+
+0020  20 00             	BRA	.+2
+0022  21                	FCB	$21
+0023  22 00             	BHI	.+2
+0025  23 00             	BLS	.+2
+0027  24 00             	BCC	.+2		; also BHS
+0029  25 00             	BCS	.+2		; also BLO
+002B  26 00             	BNE	.+2
+002D  27 00             	BEQ	.+2
+002F  28 00             	BVC	.+2
+0031  29 00             	BVS	.+2
+0033  2A 00             	BPL	.+2
+0035  2B 00             	BMI	.+2
+0037  2C 00             	BGE	.+2
+0039  2D 00             	BLT	.+2
+003B  2E 00             	BGT	.+2
+003D  2F 00             	BLE	.+2
+
+003F  30                	TSX
+0040  31                	INS
+0041  32                	PULA
+0042  33                	PULB
+0043  34                	DES
+0044  35                	TXS
+0045  36                	PSHA
+0046  37                	PSHB
+0047  38                	FCB	$38
+0048  39                	RTS
+0049  3A                	FCB	$3A
+004A  3B                	RTI
+004B  3C                	FCB	$3C
+004C  3D                	FCB	$3D
+004D  3E                	WAI
+004E  3F                	SWI
+
+004F  40                	NEGA
+0050  41                	FCB	$41
+0051  42                	FCB	$42
+0052  43                	COMA
+0053  44                	LSRA
+0054  45                	FCB	$45
+0055  46                	RORA
+0056  47                	ASRA
+0057  48                	ASLA
+0058  49                	ROLA
+0059  4A                	DECA
+005A  4B                	FCB	$4B
+005B  4C                	INCA
+005C  4D                	TSTA
+005D  4E                	FCB	$4E
+005E  4F                	CLRA
+
+005F  50                	NEGB
+0060  51                	FCB	$51
+0061  52                	FCB	$52
+0062  53                	COMB
+0063  54                	LSRB
+0064  55                	FCB	$55
+0065  56                	RORB
+0066  57                	ASRB
+0067  58                	ASLB
+0068  59                	ROLB
+0069  5A                	DECB
+006A  5B                	FCB	$5B
+006B  5C                	INCB
+006C  5D                	TSTB
+006D  5E                	FCB	$5E
+006E  5F                	CLRB
+
+006F  60 58             	NEG	$58,X
+0071  61                	FCB	$61
+0072  62                	FCB	$62
+0073  63 58             	COM	$58,X
+0075  64 58             	LSR	$58,X
+0077  65                	FCB	$65
+0078  66 58             	ROR	$58,X
+007A  67 58             	ASR	$58,X
+007C  68 58             	ASL	$58,X
+007E  69 58             	ROL	$58,X
+0080  6A 58             	DEC	$58,X
+0082  6B                	FCB	$6B
+0083  6C 58             	INC	$58,X
+0085  6D 58             	TST	$58,X
+0087  6E 58             	JMP	$58,X
+0089  6F 58             	CLR	$58,X
+
+008B  70 4558           	NEG	$4558
+008E  71                	FCB	$71
+008F  72                	FCB	$72
+0090  73 4558           	COM	$4558
+0093  74 4558           	LSR	$4558
+0096  75                	FCB	$75
+0097  76 4558           	ROR	$4558
+009A  77 4558           	ASR	$4558
+009D  78 4558           	ASL	$4558
+00A0  79 4558           	ROL	$4558
+00A3  7A 4558           	DEC	$4558
+00A6  7B                	FCB	$7B
+00A7  7C 4558           	INC	$4558
+00AA  7D 4558           	TST	$4558
+00AD  7E 00B0           	JMP	.+3
+00B0  7F 4558           	CLR	$4558
+
+00B3  80 49             	SUBA	#$49
+00B5  81 49             	CMPA	#$49
+00B7  82 49             	SBCA	#$49
+00B9  83                	FCB	$83
+00BA  84 49             	ANDA	#$49
+00BC  85 49             	BITA	#$49
+00BE  86 49             	LDAA	#$49
+00C0  87                	FCB	$87
+00C1  88 49             	EORA	#$49
+00C3  89 49             	ADCA	#$49
+00C5  8A 49             	ORAA	#$49
+00C7  8B 49             	ADDA	#$49
+00C9  8C 494D           	CPX	#$494D
+00CC  8D 00             	BSR	.+2
+00CE  8E 494D           	LDS	#$494D
+00D1  8F                	FCB	$8F
+
+00D2  90 44             	SUBA	$44
+00D4  91 44             	CMPA	$44
+00D6  92 44             	SBCA	$44
+00D8  93                	FCB	$93
+00D9  94 44             	ANDA	$44
+00DB  95 44             	BITA	$44
+00DD  96 44             	LDAA	$44
+00DF  97 44             	STAA	$44
+00E1  98 44             	EORA	$44
+00E3  99 44             	ADCA	$44
+00E5  9A 44             	ORAA	$44
+00E7  9B 44             	ADDA	$44
+00E9  9C 44             	CPX	$44
+00EB  9D                	FCB	$9D
+00EC  9E 44             	LDS	$44
+00EE  9F 44             	STS	$44
+
+00F0  A0 58             	SUBA	$58,X
+00F2  A1 58             	CMPA	$58,X
+00F4  A2 58             	SBCA	$58,X
+00F6  A3                	FCB	$A3
+00F7  A4 58             	ANDA	$58,X
+00F9  A5 58             	BITA	$58,X
+00FB  A6 58             	LDAA	$58,X
+00FD  A7 58             	STAA	$58,X
+00FF  A8 58             	EORA	$58,X
+0101  A9 58             	ADCA	$58,X
+0103  AA 58             	ORAA	$58,X
+0105  AB 58             	ADDA	$58,X
+0107  AC 58             	CPX	$58,X
+0109  AD 58             	JSR	$58,X
+010B  AE 58             	LDS	$58,X
+010D  AF 58             	STS	$58,X
+
+010F  B0 4558           	SUBA	$4558
+0112  B1 4558           	CMPA	$4558
+0115  B2 4558           	SBCA	$4558
+0118  B3                	FCB	$B3
+0119  B4 4558           	ANDA	$4558
+011C  B5 4558           	BITA	$4558
+011F  B6 4558           	LDAA	$4558
+0122  B7 4558           	STAA	$4558
+0125  B8 4558           	EORA	$4558
+0128  B9 4558           	ADCA	$4558
+012B  BA 4558           	ORAA	$4558
+012E  BB 4558           	ADDA	$4558
+0131  BC 4558           	CPX	$4558
+0134  BD 0137           	JSR	.+3
+0137  BE 4558           	LDS	$4558
+013A  BF 4558           	STS	$4558
+
+013D  C0 49             	SUBB	#$49
+013F  C1 49             	CMPB	#$49
+0141  C2 49             	SBCB	#$49
+0143  C3                	FCB	$C3
+0144  C4 49             	ANDB	#$49
+0146  C5 49             	BITB	#$49
+0148  C6 49             	LDAB	#$49
+014A  C7                	FCB	$C7
+014B  C8 49             	EORB	#$49
+014D  C9 49             	ADCB	#$49
+014F  CA 49             	ORAB	#$49
+0151  CB 49             	ADDB	#$49
+0153  CC                	FCB	$CC
+0154  CD                	FCB	$CD
+0155  CE 494D           	LDX	#$494D
+0158  BF                	FCB	$BF
+
+0159  D0 44             	SUBB	$44
+015B  D1 44             	CMPB	$44
+015D  D2 44             	SBCB	$44
+015F  C3                	FCB	$C3
+0160  D4 44             	ANDB	$44
+0162  D5 44             	BITB	$44
+0164  D6 44             	LDAB	$44
+0166  D7 44             	STAB	$44
+0168  D8 44             	EORB	$44
+016A  D9 44             	ADCB	$44
+016C  DA 44             	ORAB	$44
+016E  DB 44             	ADDB	$44
+0170  DC                	FCB	$DC
+0171  DD                	FCB	$DD
+0172  DE 44             	LDX	$44
+0174  DF 44             	STX	$44
+
+0176  E0 58             	SUBB	$58,X
+0178  E1 58             	CMPB	$58,X
+017A  E2 58             	SBCB	$58,X
+017C  E3                	FCB	$E3
+017D  E4 58             	ANDB	$58,X
+017F  E5 58             	BITB	$58,X
+0181  E6 58             	LDAB	$58,X
+0183  E7 58             	STAB	$58,X
+0185  E8 58             	EORB	$58,X
+0187  E9 58             	ADCB	$58,X
+0189  EA 58             	ORAB	$58,X
+018B  EB 58             	ADDB	$58,X
+018D  EC                	FCB	$EC
+018E  ED                	FCB	$ED
+018F  EE 58             	LDX	$58,X
+0191  EF 58             	STX	$58,X
+
+0193  F0 4558           	SUBB	$4558
+0196  F1 4558           	CMPB	$4558
+0199  F2 4558           	SBCB	$4558
+019C  F3                	FCB	$F3
+019D  F4 4558           	ANDB	$4558
+01A0  F5 4558           	BITB	$4558
+01A3  F6 4558           	LDAB	$4558
+01A6  F7 4558           	STAB	$4558
+01A9  F8 4558           	EORB	$4558
+01AC  F9 4558           	ADCB	$4558
+01AF  FA 4558           	ORAB	$4558
+01B2  FB 4558           	ADDB	$4558
+01B5  FC                	FCB	$FC
+01B6  FD                	FCB	$FD
+01B7  FE 4558           	LDX	$4558
+01BA  FF 4558           	STX	$4558
+
+00000 Total Error(s)
+

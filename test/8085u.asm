@@ -1,0 +1,289 @@
+	CPU	8085U
+
+	NOP
+	LXI	B,-1
+	STAX	B
+	INX	B
+	INR	B
+	DCR	B
+	MVI	B,-1
+	RLC
+
+	DSUB		; 08 DSUB => HL = HL - BC
+	DAD	B
+	LDAX	B
+	DCX	B
+	INR	C
+	DCR	C
+	MVI	C,-1
+	RRC
+
+	ARHL		; 10 ARHL => ASR HL
+	LXI	D,-1
+	STAX	D
+	INX	D
+	INR	D
+	DCR	D
+	MVI	D,-1
+	RAL
+
+	RDEL		; 18 RDEL => RL DE (with carry)
+	DAD	D
+	LDAX	D
+	DCX	D
+	INR	E
+	DCR	E
+	MVI	E,-1
+	RAR
+
+	RIM
+	LXI	H,-1
+	SHLD	.
+	INX	H
+	INR	H
+	DCR	H
+	MVI	H,-1
+	DAA
+
+	LDHI	-1	; 28 LDHI nn => DE = HL + nn
+	DAD	H
+	LHLD	.
+	DCX	H
+	INR	L
+	DCR	L
+	MVI	L,-1
+	CMA
+
+	SIM
+	LXI	SP,-1
+	STA	.
+	INX	SP
+	INR	M
+	DCR	M
+	MVI	M,-1
+	STC
+
+	LDSI	-1	; 38 LDSI nn => DE = SP + nn
+	DAD	SP
+	LDA	.
+	DCX	SP
+	INR	A
+	DCR	A
+	MVI	A,-1
+	CMC
+
+	MOV	B,B
+	MOV	B,C
+	MOV	B,D
+	MOV	B,E
+	MOV	B,H
+	MOV	B,L
+	MOV	B,M
+	MOV	B,A
+
+	MOV	C,B
+	MOV	C,C
+	MOV	C,D
+	MOV	C,E
+	MOV	C,H
+	MOV	C,L
+	MOV	C,M
+	MOV	C,A
+
+	MOV	D,B
+	MOV	D,C
+	MOV	D,D
+	MOV	D,E
+	MOV	D,H
+	MOV	D,L
+	MOV	D,M
+	MOV	D,A
+
+	MOV	E,B
+	MOV	E,C
+	MOV	E,D
+	MOV	E,E
+	MOV	E,H
+	MOV	E,L
+	MOV	E,M
+	MOV	E,A
+
+	MOV	H,B
+	MOV	H,C
+	MOV	H,D
+	MOV	H,E
+	MOV	H,H
+	MOV	H,L
+	MOV	H,M
+	MOV	H,A
+
+	MOV	L,B
+	MOV	L,C
+	MOV	L,D
+	MOV	L,E
+	MOV	L,H
+	MOV	L,L
+	MOV	L,M
+	MOV	L,A
+
+	MOV	M,B
+	MOV	M,C
+	MOV	M,D
+	MOV	M,E
+	MOV	M,H
+	MOV	M,L
+	HLT
+	MOV	M,A
+
+	MOV	A,B
+	MOV	A,C
+	MOV	A,D
+	MOV	A,E
+	MOV	A,H
+	MOV	A,L
+	MOV	A,M
+	MOV	A,A
+
+	ADD	B
+	ADD	C
+	ADD	D
+	ADD	E
+	ADD	H
+	ADD	L
+	ADD	M
+	ADD	A
+
+	ADC	B
+	ADC	C
+	ADC	D
+	ADC	E
+	ADC	H
+	ADC	L
+	ADC	M
+	ADC	A
+
+	SUB	B
+	SUB	C
+	SUB	D
+	SUB	E
+	SUB	H
+	SUB	L
+	SUB	M
+	SUB	A
+
+	SBB	B
+	SBB	C
+	SBB	D
+	SBB	E
+	SBB	H
+	SBB	L
+	SBB	M
+	SBB	A
+
+	ANA	B
+	ANA	C
+	ANA	D
+	ANA	E
+	ANA	H
+	ANA	L
+	ANA	M
+	ANA	A
+
+	XRA	B
+	XRA	C
+	XRA	D
+	XRA	E
+	XRA	H
+	XRA	L
+	XRA	M
+	XRA	A
+
+	ORA	B
+	ORA	C
+	ORA	D
+	ORA	E
+	ORA	H
+	ORA	L
+	ORA	M
+	ORA	A
+
+	CMP	B
+	CMP	C
+	CMP	D
+	CMP	E
+	CMP	H
+	CMP	L
+	CMP	M
+	CMP	A
+
+	RNZ
+	POP	B
+	JNZ	.
+	JMP	.
+	CNZ	.
+	PUSH	B
+	ADI	-1
+	RST	0
+
+	RZ
+	RET
+	JZ	.
+	RSTV		; CB RSTV => call 40H if overflow
+	CZ	.
+	CALL	.
+	ACI	-1
+	RST	1
+
+	RNC
+	POP	D
+	JNC	.
+	OUT	255
+	CNC	.
+	PUSH	D
+	SUI	-1
+	RST	2
+
+	RC
+	SHLX		; D9 SHLX => LD (DE),HL
+	JC	.
+	IN	255
+	CC	.
+	JNX5	.	; DD JNX5 nnnn
+	SBI	-1
+	RST	3
+
+	RPO
+	POP	H
+	JPO	.
+	XTHL
+	CPO	.
+	PUSH	H
+	ANI	-1
+	RST	4
+
+	RPE
+	PCHL
+	JPE	.
+	XCHG
+	CPE	.
+	LHLX		; ED LHLX => LD HL,(DE)
+	XRI	-1
+	RST	5
+
+	RP
+	POP	PSW
+	JP	.
+	DI
+	CP	.	
+	PUSH	PSW
+	ORI	-1
+	RST	6
+
+	RM
+	SPHL
+	JM	.
+	EI
+	CM	.
+	JX5	.	; FD JX5 nnnn
+	CPI	-1
+	RST	7
