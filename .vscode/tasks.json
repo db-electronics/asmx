@@ -7,6 +7,9 @@
             "label": "build",
             "type": "shell",
             "command": "gcc -o ${workspaceFolder}/bin/asmx ${workspaceFolder}/src/*.c",
+            "windows": {
+                "command": "gcc -o ${workspaceFolder}\\bin\\asmx.exe ${workspaceFolder}\\src\\*.c"
+            },
             "options": {
                 "cwd": "${workspaceFolder}"
             },
@@ -19,6 +22,9 @@
             "label": "debugbuild",
             "type": "shell",
             "command": "gcc -ggdb -o ${workspaceFolder}/bin/debug.out ${workspaceFolder}/src/*.c",
+            "windows": {
+                "command": "gcc -ggdb -o ${workspaceFolder}\\bin\\debug.out ${workspaceFolder}\\src\\*.c"
+            },
             "options": {
                 "cwd": "${workspaceFolder}"
             },
