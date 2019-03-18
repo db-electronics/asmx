@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "gcc -O2 -o ${workspaceFolder}/bin/asmx ${workspaceFolder}/src/*.c",
+            "command": "gcc -o ${workspaceFolder}/bin/asmx ${workspaceFolder}/src/*.c",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
@@ -18,7 +18,7 @@
         {
             "label": "debugbuild",
             "type": "shell",
-            "command": "gcc -ggdb -O2 -o ${workspaceFolder}/bin/debug.out ${workspaceFolder}/src/*.c",
+            "command": "gcc -ggdb -o ${workspaceFolder}/bin/debug.out ${workspaceFolder}/src/*.c",
             "options": {
                 "cwd": "${workspaceFolder}"
             },

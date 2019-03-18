@@ -1,17 +1,18 @@
 // asmx.c - copyright 1998-2007 Bruce Tomlin
+// asmx.c - copyright 2019 René Richard
 
 #include "asmx.h"
 
-#define VERSION_NAME "asmx multi-assembler"
+#define VERSION_NAME "ASMX multi-assembler"
 
 //#define ENABLE_REP    // uncomment to enable REPEAT pseudo-op (still under development)
 //#define DOLLAR_SYM    // allow symbols to start with '$' (incompatible with $ for hexadecimal constants!)
 //#define TEMP_LBLAT    // enable use of '@' temporary labels (deprecated)
 
 #ifndef VERSION // should be defined on the command line
-#define VERSION "2.0"
+#define VERSION "3.0 RC1"
 #endif
-#define COPYRIGHT "Copyright 1998-2007 Bruce Tomlin"
+#define COPYRIGHT "Copyright 2019 René Richard\nCopyright 1998-2007 Bruce Tomlin"
 #define IHEX_SIZE   32          // max number of data bytes per line in hex object file
 #define MAXSYMLEN   19          // max symbol length (only used in DumpSym())
 const int symTabCols = 3;       // number of columns for symbol table dump
