@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "gcc -o ${workspaceFolder}asmx ${workspaceFolder}/src/*.c",
+            "command": "gcc -o ${workspaceFolder}/asmx ${workspaceFolder}/src/*.c",
             "windows": {
                 "command": "gcc -o ${workspaceFolder}\\asmx.exe ${workspaceFolder}\\src\\*.c"
             },
