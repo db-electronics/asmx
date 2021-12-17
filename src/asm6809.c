@@ -333,7 +333,7 @@ const char pshRegs[] = "CC A B DP X Y U PC D S";
 const char idxRegs[] = "X Y U S";
 const char idxRegsW[] = "X Y U S W";
 
-u_char dpReg;
+unsigned char dpReg;
 
 
 // --------------------------------------------------------------

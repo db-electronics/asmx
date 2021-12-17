@@ -132,7 +132,7 @@ char jag_cond[]  = { 1,2, 4,   5,  6,8,  9,10,20,  21, 22,24, 25, 26,
 // --------------------------------------------------------------
 
 
-void InstrJag(u_short parm, u_short reg1, u_short reg2)
+void InstrJag(unsigned short parm, unsigned short reg1, unsigned short reg2)
 {
     InstrW(((parm & 0x3F) << 10) + ((reg1 & 0x1F) << 5) + (reg2 & 0x1F));
 }

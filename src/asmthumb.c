@@ -110,7 +110,7 @@ struct OpcdRec Thumb_opcdTab[] =
 // --------------------------------------------------------------
 
 
-void SetThumbMultiReg(int reg, u_short *regbits, bool *warned)
+void SetThumbMultiReg(int reg, unsigned short *regbits, bool *warned)
 {
     if (!*warned && *regbits & (1 << reg))
     {
@@ -121,7 +121,7 @@ void SetThumbMultiReg(int reg, u_short *regbits, bool *warned)
 }
 
 
-int ThumbGetMultiRegs(bool useLR, u_short *regbits)
+int ThumbGetMultiRegs(bool useLR, unsigned short *regbits)
 {
     int     reg1,reg2,i;
     Str255  word;
@@ -207,7 +207,7 @@ int ThumbGetMultiRegs(bool useLR, u_short *regbits)
 
 
 // get two registers R0-R7, returns -1 if error
-u_long TwoRegs()
+unsigned long TwoRegs()
 {
     int     reg1,reg2;
 
@@ -246,7 +246,7 @@ int Thumb_DoCPUOpcode(int typ, int parm)
     char    *oldLine;
     int     token;
     int     reg1,reg2;
-    u_short regbits;
+    unsigned short regbits;
 
     switch(typ)
     {

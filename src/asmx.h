@@ -12,18 +12,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#if 0
-// these should already be defined in sys/types.h (included from stdio.h)
-typedef unsigned char  u_char;
-typedef unsigned short u_short;
-typedef unsigned int   u_int;
-typedef unsigned long  u_long;
-#endif
-
 // a few useful typedefs
 typedef unsigned char  bool;    // define a bool type
 enum { FALSE = 0, TRUE = 1 };
-typedef char Str255[256];       // generic string type
+#define maxStrLength    256
+typedef char Str255[maxStrLength];       // generic string type
 
 #define maxOpcdLen  11          // max opcode length (for building opcode table)
 typedef char OpcdStr[maxOpcdLen+1];
@@ -31,7 +24,7 @@ struct OpcdRec
 {
     OpcdStr         name;       // opcode name
     short           typ;        // opcode type
-    u_long          parm;       // opcode parameter
+    unsigned long   parm;       // opcode parameter
 };
 typedef struct OpcdRec *OpcdPtr;
 
@@ -77,7 +70,7 @@ enum
 
 void Error(char *message);
 void Warning(char *message);
-void DefSym(char *symName, u_long val, bool setSym, bool equSym);
+void DefSym(char *symName, unsigned long val, bool setSym, bool equSym);
 int GetWord(char *word);
 bool Expect(char *expected);
 bool Comma();
@@ -101,42 +94,42 @@ int EvalLBranch(int instrLen);
 void DoLabelOp(int typ, int parm, char *labl);
 
 void InstrClear(void);
-void InstrAddB(u_char b);
-void InstrAddX(u_long op);
-void InstrAddW(u_short w);
-void InstrAdd3(u_long l);
-void InstrAddL(u_long l);
+void InstrAddB(unsigned char b);
+void InstrAddX(unsigned long op);
+void InstrAddW(unsigned short w);
+void InstrAdd3(unsigned long l);
+void InstrAddL(unsigned long l);
 
-void InstrB(u_char b1);
-void InstrBB(u_char b1, u_char b2);
-void InstrBBB(u_char b1, u_char b2, u_char b3);
-void InstrBBBB(u_char b1, u_char b2, u_char b3, u_char b4);
-void InstrBBBBB(u_char b1, u_char b2, u_char b3, u_char b4, u_char b5);
-void InstrBW(u_char b1, u_short w1);
-void InstrBBW(u_char b1, u_char b2, u_short w1);
-void InstrBBBW(u_char b1, u_char b2, u_char b3, u_short w1);
-void InstrX(u_long op);
-void InstrXB(u_long op, u_char b1);
-void InstrXBB(u_long op, u_char b1, u_char b2);
-void InstrXBBB(u_long op, u_char b1, u_char b2, u_char b3);
-void InstrXBBBB(u_long op, u_char b1, u_char b2, u_char b3, u_char b4);
-void InstrXW(u_long op, u_short w1);
-void InstrXBW(u_long op, u_char b1, u_short w1);
-void InstrXBWB(u_long op, u_char b1, u_short w1, u_char b2);
-void InstrXWW(u_long op, u_short w1, u_short w2);
-void InstrX3(u_long op, u_long l1);
-void InstrW(u_short w1);
-void InstrWW(u_short w1, u_short w2);
-void InstrWL(u_short w1, u_long l1);
-void InstrL(u_long l1);
-void InstrLL(u_long l1, u_long l2);
+void InstrB(unsigned char b1);
+void InstrBB(unsigned char b1, unsigned char b2);
+void InstrBBB(unsigned char b1, unsigned char b2, unsigned char b3);
+void InstrBBBB(unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4);
+void InstrBBBBB(unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4, unsigned char b5);
+void InstrBW(unsigned char b1, unsigned short w1);
+void InstrBBW(unsigned char b1, unsigned char b2, unsigned short w1);
+void InstrBBBW(unsigned char b1, unsigned char b2, unsigned char b3, unsigned short w1);
+void InstrX(unsigned long op);
+void InstrXB(unsigned long op, unsigned char b1);
+void InstrXBB(unsigned long op, unsigned char b1, unsigned char b2);
+void InstrXBBB(unsigned long op, unsigned char b1, unsigned char b2, unsigned char b3);
+void InstrXBBBB(unsigned long op, unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4);
+void InstrXW(unsigned long op, unsigned short w1);
+void InstrXBW(unsigned long op, unsigned char b1, unsigned short w1);
+void InstrXBWB(unsigned long op, unsigned char b1, unsigned short w1, unsigned char b2);
+void InstrXWW(unsigned long op, unsigned short w1, unsigned short w2);
+void InstrX3(unsigned long op, unsigned long l1);
+void InstrW(unsigned short w1);
+void InstrWW(unsigned short w1, unsigned short w2);
+void InstrWL(unsigned short w1, unsigned long l1);
+void InstrL(unsigned long l1);
+void InstrLL(unsigned long l1, unsigned long l2);
 
 //char * ListStr(char *l, char *s);
-char * ListByte(char *p, u_char b);
-//char * ListWord(char *p, u_short w);
-//char * ListLong(char *p, u_long l);
-//char * ListAddr(char *p,u_long addr);
-//char * ListLoc(u_long addr);
+char * ListByte(char *p, unsigned char b);
+//char * ListWord(char *p, unsigned short w);
+//char * ListLong(char *p, unsigned long l);
+//char * ListAddr(char *p,unsigned long addr);
+//char * ListLoc(unsigned long addr);
 
 // various internal variables used by the assemblers
 extern  bool            errFlag;            // TRUE if error occurred this line
@@ -145,9 +138,9 @@ extern  char           *linePtr;            // pointer into current line
 extern  int             instrLen;           // Current instruction length (negative to display as long DB)
 extern  Str255          line;               // Current line from input file
 extern  char           *linePtr;            // pointer into current line
-extern  u_long          locPtr;             // Current program address
+extern  unsigned long          locPtr;             // Current program address
 extern  int             instrLen;           // Current instruction length (negative to display as long DB)
-extern  u_char          bytStr[MAX_BYTSTR]; // Current instruction / buffer for long DB statements
+extern  unsigned char          bytStr[MAX_BYTSTR]; // Current instruction / buffer for long DB statements
 extern  bool            showAddr;           // TRUE to show LocPtr on listing
 extern  int             endian;             // 0 = little endian, 1 = big endian, -1 = undefined endian
 extern  bool            evalKnown;          // TRUE if all operands in Eval were "known"

@@ -53,9 +53,9 @@ enum
 
 typedef struct EArec
 {
-    u_short         mode;       // 6 bits for the opcode
-    u_short         len;        // number of extra words
-    u_short         extra[5];   // storage for extra words
+    unsigned short         mode;       // 6 bits for the opcode
+    unsigned short         len;        // number of extra words
+    unsigned short         extra[5];   // storage for extra words
 } EArec;
 
 const char addr_regs[] = "A0 A1 A2 A3 A4 A5 A6 A7 SP";
@@ -461,7 +461,7 @@ void InstrAddE(EArec *ea)
 }
 
 
-void InstrWE(u_short op, EArec *ea)
+void InstrWE(unsigned short op, EArec *ea)
 {
 
     InstrClear();
@@ -471,7 +471,7 @@ void InstrWE(u_short op, EArec *ea)
 }
 
 
-void InstrWWE(u_short op, u_short w1, EArec *ea)
+void InstrWWE(unsigned short op, unsigned short w1, EArec *ea)
 {
 
     InstrClear();
@@ -482,7 +482,7 @@ void InstrWWE(u_short op, u_short w1, EArec *ea)
 }
 
 
-void InstrWLE(u_short op, u_long l1, EArec *ea)
+void InstrWLE(unsigned short op, unsigned long l1, EArec *ea)
 {
 
     InstrClear();
@@ -498,7 +498,7 @@ void InstrWLE(u_short op, u_long l1, EArec *ea)
 }
 
 
-void InstrWEE(u_short op, EArec *srcEA, EArec *dstEA)
+void InstrWEE(unsigned short op, EArec *srcEA, EArec *dstEA)
 {
     // OP dstEA srcEA
     // srcext - up to 2 words on 68000, 5 words on 68020
@@ -513,7 +513,7 @@ void InstrWEE(u_short op, EArec *srcEA, EArec *dstEA)
 }
 
 
-void CheckSize(int size, u_long val)
+void CheckSize(int size, unsigned long val)
 {
     switch(size)
     {

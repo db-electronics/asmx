@@ -1,0 +1,11 @@
+/bin
+/out
+
+*.exe
+*.out
+*.bin
+
+*.lst
+!test/ref/*.lst
+*.hex
+!test/ref/*.hex

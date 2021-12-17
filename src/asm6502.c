@@ -118,7 +118,7 @@ enum addrOps
 };
 
 
-const u_char mode2op6502[] = // [o_Max * a_Max] =
+const unsigned char mode2op6502[] = // [o_Max * a_Max] =
 {//Imm=0 Abs=1 Zpg=2 Acc=3 Inx=4 Iny=5 Zpx=6 Abx=7 Aby=8 Ind=9 Zpy=10 Zpi=11
     0x09, 0x0D, 0x05,    0, 0x01, 0x11, 0x15, 0x1D, 0x19,    0,    0,    0, 0,0,0,0,0,0, //  0 ORA
        0, 0x0E, 0x06, 0x0A,    0,    0, 0x16, 0x1E,    0,    0,    0,    0, 0,0,0,0,0,0, //  1 ASL
@@ -160,7 +160,7 @@ const u_char mode2op6502[] = // [o_Max * a_Max] =
 };
 
 
-const u_char mode2op65C02[] = // [o_Max * a_Max] =
+const unsigned char mode2op65C02[] = // [o_Max * a_Max] =
 {//Imm=0 Abs=1 Zpg=2 Acc=3 Inx=4 Iny=5 Zpx=6 Abx=7 Aby=8 Ind=9 Zpy=10 Zpi=11
     0x09, 0x0D, 0x05,    0, 0x01, 0x11, 0x15, 0x1D, 0x19,    0,    0, 0x12, 0,0,0,0,0,0, //  0 ORA
        0, 0x0E, 0x06, 0x0A,    0,    0, 0x16, 0x1E,    0,    0,    0,    0, 0,0,0,0,0,0, //  1 ASL
@@ -192,7 +192,7 @@ const u_char mode2op65C02[] = // [o_Max * a_Max] =
 };
 
 
-const u_char mode2op65C816[] = // [o_Max * a_Max] =
+const unsigned char mode2op65C816[] = // [o_Max * a_Max] =
 {//Imm=0 Abs=1 Zpg=2 Acc=3 Inx=4 Iny=5 Zpx=6 Abx=7 Aby=8 Ind=9 Zpy10 Zpi11 AbL12 ALX13 DIL14 DIY15 Stk16 SIY17
     0x09, 0x0D, 0x05,    0, 0x01, 0x11, 0x15, 0x1D, 0x19,    0,    0, 0x12, 0x0F, 0x1F, 0x07, 0x17, 0x03, 0x13, //  0 ORA
        0, 0x0E, 0x06, 0x0A,    0,    0, 0x16, 0x1E,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0, //  1 ASL
@@ -408,7 +408,7 @@ struct OpcdRec M6502_opcdTab[] =
 // --------------------------------------------------------------
 
 
-void InstrB3(u_char b, u_long l)
+void InstrB3(unsigned char b, unsigned long l)
 {
     InstrClear();
     InstrAddB(b);
@@ -428,7 +428,7 @@ int M6502_DoCPUOpcode(int typ, int parm)
     bool    forceabs;
     int     opcode;
     int     mode;
-    const u_char *modes;     // pointer to current o_Mode instruction's opcodes
+    const unsigned char *modes;     // pointer to current o_Mode instruction's opcodes
 
     switch(typ)
     {
