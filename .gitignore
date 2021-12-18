@@ -1,9 +1,9 @@
-/bin
-/out
+/release
+/debug
+/.vscode
 
 *.exe
-*.out
-*.bin
+*.o
 
 *.lst
 !test/ref/*.lst

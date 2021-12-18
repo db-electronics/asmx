@@ -168,7 +168,7 @@ struct OpcdRec Z80_opcdTab[] =
 // --------------------------------------------------------------
 
 
-int IXOffset()
+int IXOffset(void)
 {
     char    *oldLine;
     Str255  word;
