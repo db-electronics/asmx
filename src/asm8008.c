@@ -277,11 +277,6 @@ struct OpcdRec I8008_opcdTab[] =
 int I8008_DoCPUOpcode(int typ, int parm)
 {
     int     val;
-    int     reg1;
-    int     reg2;
-    Str255  word;
-    char    *oldLine;
-//  int     token;
 
     switch(typ)
     {
