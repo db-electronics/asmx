@@ -4440,9 +4440,13 @@ void DoLabelOp(int typ, int parm, char *labl)
                     {
                         token = GetWord(labl);
                         if (token)
+                        {
                             showAddr = TRUE;
-                            while (*linePtr == ' ' || *linePtr == '\t')
-                                linePtr++;
+                        }                            
+                        while (*linePtr == ' ' || *linePtr == '\t')
+                        {
+                            linePtr++;
+                        }
 
                         if (labl[0])
                         {
