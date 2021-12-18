@@ -1,5 +1,5 @@
 # ASMX
-ASMX is originally a cross-assembler developped by Bruce Tomlin. His original work can found in this repository under [release 2.0b5](https://github.com/db-electronics/asmx/releases/tag/2.0b5). This repository contains a fork of Bruce's original work licensed under GPLv3.
+ASMX is originally a cross-assembler developped by Bruce Tomlin. His original work can found in this repository under [release 2.0b5](https://github.com/db-electronics/asmx/releases/tag/2.0b5). This repository contains a fork of Bruce's original work, with his permission, licensed under GPLv3.
 
 Pull requests welcomed!
 
