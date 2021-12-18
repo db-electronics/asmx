@@ -1,5 +1,5 @@
 // asmx.c - copyright 1998-2007 Bruce Tomlin
-// asmx.c - copyright 2019 René Richard
+// asmx.c - copyright 2021 René Richard
 
 #include "asmx.h"
 
