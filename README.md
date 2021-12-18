@@ -3,16 +3,17 @@ ASMX is originally a cross-assembler developped by Bruce Tomlin. His original wo
 
 Pull requests welcomed!
 
+# Modifications By Others
+The fine people over at [Retrotechnology.com](https://www.retrotechnology.com/memship/asmx.html) have published several fixes to asmx. These have been incorporated into this repository. I kept all markers (changes are initialed with "HRJ" or "Herb" or other's initials) where possible to denote this and to attribute their work. 
+
 # Build the Project
 ASMX builds under Linux and Windows, I have not tested it on MAC. Just run make.
-* Add the gcc.exe path to the PATH environment variable
-    * ex: __'C:/msys64/mingw64/bin/gcc.exe'__
-* Create a __GDB__ environment variable containing the the exact path to __gdb.exe__
-    * $env:GDB = __'C:/msys64/mingw64/bin/gdb.exe'__
+* Add the gcc/gdb path to the system PATH environment variable
+    * ex: __'C:/msys64/mingw64/bin'__
 
 Else you can build ASMX directly from the command line rather simply with the following command.
 ```
-gcc *.c -o asmx
+gcc *.c -O2 -o asmx
 ```
 # Options
 * --                  
