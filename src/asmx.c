@@ -12,7 +12,7 @@
 #ifndef VERSION // should be defined on the command line
 #define VERSION "3.0 RC1"
 #endif
-#define COPYRIGHT "Copyright 2019 René Richard\nCopyright 1998-2007 Bruce Tomlin"
+#define COPYRIGHT "Copyright 2021 Rene Richard\nCopyright 1998-2007 Bruce Tomlin"
 #define IHEX_SIZE   32          // max number of data bytes per line in hex object file
 #define MAXSYMLEN   19          // max symbol length (only used in DumpSym())
 const int symTabCols = 3;       // number of columns for symbol table dump
@@ -274,7 +274,8 @@ enum
     o_IF,       // IF <expr> pseudo-op
     o_ELSE,     // ELSE pseudo-op
     o_ELSIF,    // ELSIF <expr> pseudo-op
-    o_ENDIF     // ENDIF pseudo-op
+    o_ENDIF,     // ENDIF pseudo-op
+	o_PAGE      // HRJ PAGE pseudo-op missing
 };
 
 struct OpcdRec opcdTab2[] =
@@ -282,6 +283,7 @@ struct OpcdRec opcdTab2[] =
     {"DB",        o_DB,       0},
     {"FCB",       o_DB,       0},
     {"BYTE",      o_DB,       0},
+	{"DATA",      o_DB,       0}, // for Intel 8008 HRJ
     {"DC.B",      o_DB,       0},
     {"DFB",       o_DB,       0},
     {"DEFB",      o_DB,       0},
@@ -352,6 +354,7 @@ struct OpcdRec opcdTab2[] =
     {"ELSIF",     o_ELSIF,    0},
     {"ENDIF",     o_ENDIF,    0},
     {"WORDSIZE",  o_WORDSIZE, 0},
+	{"PAGE",      o_PAGE,     0}, //HRJ added
 
     {"",          o_Illegal,  0}
 };
@@ -525,6 +528,7 @@ void AsmInit(void)
     ASSEMBLER(Z80);
     ASSEMBLER(Thumb);
     ASSEMBLER(ARM);
+    ASSEMBLER(8008);   // HRJ
 
 //  strcpy(defCPU,"Z80");     // hard-coded default for testing
 
@@ -1277,19 +1281,19 @@ bool Expect(char *expected)
 }
 
 
-bool Comma()
+bool Comma(void)
 {
     return Expect(",");
 }
 
 
-bool RParen()
+bool RParen(void)
 {
     return Expect(")");
 }
 
 
-void EatIt()
+void EatIt(void)
 {
     Str255  word;
     while (GetWord(word));      // eat junk at end of line
@@ -1300,7 +1304,7 @@ void EatIt()
  *  IllegalOperand
  */
 
-void IllegalOperand()
+void IllegalOperand(void) /*hrj*/
 {
     Error("Illegal operand");
     EatIt();
@@ -1311,7 +1315,7 @@ void IllegalOperand()
  *  MissingOperand
  */
 
-void MissingOperand()
+void MissingOperand(void) /*hrj */
 {
     Error("Missing operand");
     EatIt();
@@ -1321,7 +1325,7 @@ void MissingOperand()
 /*
  *  BadMode
  */
-void BadMode()
+void BadMode(void)
 {
     Error("Illegal addressing mode");
     EatIt();
@@ -1487,7 +1491,7 @@ MacroPtr NewMacro(char *name)
 
     return p;
 }
-    
+
 
 MacroPtr AddMacro(char *name)
 {
@@ -1499,7 +1503,7 @@ MacroPtr AddMacro(char *name)
 
     return p;
 }
-    
+
 
 void AddMacroParm(MacroPtr macro, char *name)
 {
@@ -1609,8 +1613,8 @@ void GetMacParms(MacroPtr macro)
                     }
                     break;
 
-                case 0x27:  // quote
-                case '"':
+                case 0x27:  // single quote
+                case '"':	// double quote
                     if (quote == 0)
                         quote = c;
                     else if (quote == c)
@@ -1640,7 +1644,7 @@ void GetMacParms(MacroPtr macro)
 }
 
 
-void DoMacParms()
+void DoMacParms(void)
 {
     int             i;
     Str255          word,word2;
@@ -2157,7 +2161,7 @@ void DumpSymTab(void)
 }
 
 
-void SortSymTab()
+void SortSymTab(void)
 {
     SymPtr          i,j;    // pointers to current elements
     SymPtr          ip,jp;  // pointers to previous elements
@@ -2374,7 +2378,7 @@ int Factor(void)
             val = RefSym(s, &evalKnown);
             break;
 
-        case -1:
+        case -1: /* an alphanum of some kind, unary operator  */
             if ((word[0] == 'H' || word[0] == 'L') && word[1] == 0 && *linePtr == '(')
             {   // handle H() and L() from vintage Atari 7800 source code
                 // note: no whitespace allowed before the open paren!
@@ -2386,6 +2390,21 @@ int Factor(void)
                 if (token == 'L') val = val & 0xFF;
                 break;
             }
+			if ( strcmp(word,"HIGH")==0 || strcmp(word,"LOW")==0)
+            {   // handle HIGH and LOW HRJ
+                token = word[0];    // save 'H' or 'L'
+                // GetWord(word);      // eat left paren
+                val = Eval0();      // evaluate sub-expression
+                // RParen();           // check for right paren
+                if (token == 'H') val = (val >> 8) & 0xFF;
+                if (token == 'L') val = val & 0xFF;
+                break;
+            }
+			if ( strcmp(word,"NOT")==0) //WAB
+            {
+                val = ~Factor();
+                break;
+			}
             if (isdigit(word[0]))   val = EvalNum(word);
                             else    val = RefSym(word,&evalKnown);
             break;
@@ -2518,9 +2537,23 @@ int Eval0(void)
 
     oldLine = linePtr;
     token = GetWord(word);
+
+// fix for SSM assembler - WAB
+    if ( strcmp(word,"AND")==0) { token = '&'; }
+    if ( strcmp(word,"OR")==0) { token = '|'; }
+    if ( strcmp(word,"XOR")==0) { token = '^'; }
+    if ( strcmp(word,"SHL")==0) { token = '<'; }
+    if ( strcmp(word,"SHR")==0) { token = '>'; }
+
+
+
     while (token == '&' || token == '|' || token == '^' ||
             (token == '<' && *linePtr == '<') ||
-            (token == '>' && *linePtr == '>'))
+            (token == '>' && *linePtr == '>') ||
+// fix for SSM assembler - WAB
+            (token == '<' && word[2] == 'L') ||
+            (token == '>' && word[2] == 'R')
+			)
     {
         switch(token)
         {
@@ -3537,7 +3570,7 @@ void DoOpcode(int typ, int parm)
     char            *oldLine;
     int             token;
     int             ch;
-    unsigned char          quote;
+    unsigned char   quote;
     char            *p;
 
     if (DoCPUOpcode(typ, parm)) return;
@@ -3561,7 +3594,7 @@ void DoOpcode(int typ, int parm)
             while (token)
             {
                 if ((token == '\'' && *linePtr && linePtr[1] != '\'') || token == '"')
-                {
+                { // single or double quote zyzzy
                     quote = token;
                     while (token == quote)
                     {
@@ -4272,7 +4305,7 @@ void DoLabelOp(int typ, int parm, char *labl)
             else                                    IllegalOperand();
 
             break;
-/*
+/* was commented out, I restored HRJ */
         case o_PAGE:
             listThisLine = TRUE;    // always list this line
 
@@ -4281,7 +4314,7 @@ void DoLabelOp(int typ, int parm, char *labl)
 
             listLineFF = TRUE;
             break;
-*/
+
         case o_OPT:
             listThisLine = TRUE;    // always list this line
 
@@ -4603,7 +4636,7 @@ void DoLabelOp(int typ, int parm, char *labl)
                         if (labl[0])
                         {
 #ifdef TEMP_LBLAT
-                            if (token == '.' || token == '@'))
+                            if (token == '.' || token == '@') /* hrj removed extra ) */
 #else
                             if (token == '.')
 #endif
@@ -4761,7 +4794,7 @@ void DoLabelOp(int typ, int parm, char *labl)
 }
 
 
-void DoLine()
+void DoLine(void)
 {
     Str255      labl;
     Str255      opcode;
@@ -5100,7 +5133,7 @@ void DoLine()
 }
 
 
-void DoPass()
+void DoPass(void)
 {
     Str255      opcode;
     int         typ;
@@ -5525,24 +5558,8 @@ int main(int argc, char * const argv[])
         exit(1);
     }
 
-    // variable for check if output files should be in a subdirectory
-    char *dir_find;
-    char path[maxStrLength], mkdir[maxStrLength];
-    int  dir_sep = '/';
-
     if (cl_List)
     {
-        dir_find = strrchr(cl_ListName, dir_sep);
-        if(dir_find != NULL){
-            strncpy(path, cl_ListName, (dir_find - cl_ListName));
-            strcpy(mkdir, "mkdir -p ");
-            strcat(mkdir, path);
-
-            if( system(mkdir) != 0 ){
-                fprintf(stderr,"Unable to create listing output directory './%s'!\n",path);
-                exit(1);
-            }
-        }
         listing = fopen(cl_ListName, "w");
         if (listing == NULL)
         {
@@ -5559,7 +5576,7 @@ int main(int argc, char * const argv[])
     }
     else if (cl_Obj)
     {
-        object = fopen(cl_ObjName, "w");
+        object = fopen(cl_ObjName, "wb");
         if (object == NULL)
         {
             fprintf(stderr,"Unable to create object output file '%s'!\n",cl_ObjName);
