@@ -2778,8 +2778,8 @@ void write_srec(unsigned long addr, unsigned char *buf, unsigned long len, int r
             break;
 
         case 28:
-            fprintf(object,"S%d%.2lX%.6lX", i, len+4, addr & 0xFFFFFF) + 1;
-            chksum = chksum + ((addr >> 16) & 0xFF);
+            fprintf(object,"S%d%.2lX%.6lX", i, len+4, addr & 0xFFFFFF);
+            chksum = chksum + ((addr >> 16) & 0xFF) + 1;
             break;
 
         default:
