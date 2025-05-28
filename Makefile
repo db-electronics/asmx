@@ -16,7 +16,7 @@ SRCS = $(wildcard $(SRCDIR)/*$(EXT))
 # Debug build settings
 #
 DBGDIR = debug
-DBGEXE = $(addprefix $(DBGDIR)\, $(APPNAME))
+DBGEXE = $(addprefix $(DBGDIR)/, $(APPNAME))
 DBGOBJS = $(SRCS:$(SRCDIR)/%$(EXT)=$(DBGDIR)/%.o)
 DBGCFLAGS = -ggdb -O0
 
@@ -24,7 +24,7 @@ DBGCFLAGS = -ggdb -O0
 # Release build settings
 #
 RELDIR = release
-RELEXE = $(addprefix $(RELDIR)\, $(APPNAME))
+RELEXE = $(addprefix $(RELDIR)/, $(APPNAME))
 RELOBJS = $(SRCS:$(SRCDIR)/%$(EXT)=$(RELDIR)/%.o)
 RELCFLAGS = -O2
 
