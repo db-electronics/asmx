@@ -2,7 +2,7 @@
 # Compiler flags
 #
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -Wall --std=gnu99
 LDFLAGS = 
 
 #
