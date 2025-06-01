@@ -4730,7 +4730,7 @@ void DoLabelOp(int typ, int parm, char *labl)
             val = 0;
 
             // open binary file
-            incbin = fopen(word, "r");
+            incbin = fopen(word, "rb");
 
             if (incbin)
             {
